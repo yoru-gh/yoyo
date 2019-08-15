@@ -1,0 +1,389 @@
+body{
+	padding-top: 40px;
+	padding-bottom: 52px;
+}
+/* 头部工具栏 */
+header{
+	box-sizing: border-box;
+	position: fixed;
+	top: 0;
+	left: 0;
+	z-index: 9;
+	width: 100%;
+	height: 51px;
+	padding: 5px;
+	/* background-color: rgba(255,255,255,.9); */
+}
+header .left,header .right{
+	float: left;
+	width: 40px;
+	height: 40px;
+	border-radius: 20px;
+	background-color: rgba(255,255,255,.8);
+	transition: all .2s ease;
+	opacity: 1;
+
+}
+header .right{
+	float: right;
+}
+header .left svg,header .right svg{
+	width: 22px;
+	height: 22px;
+	margin: 9px;
+	fill: var(--theme-color);
+}
+
+/* 中心区 */
+.content{
+	box-sizing: border-box;
+	width: 100%;
+}
+.content .msg{
+	box-sizing: border-box;
+	width: 100%;
+	height: 140px;
+	padding: 10px;
+	margin-bottom: 14px;
+}
+.msg .bgbox{
+	box-sizing: border-box;
+	position: relative;
+	width: 100%;
+	height: 120px;
+	padding: 30px 20px 30px 100px;
+	border-radius: 10px;
+	box-shadow: var(--theme-box-shadow);
+	background: var(--theme-gradient);
+}
+.bgbox .userpic{
+	position: absolute;
+	top: 30px;
+	left: 20px;
+	width: 60px;
+	height: 60px;
+	border-radius: 100%;
+	border: 2px rgba(255,255,255,.3) solid;
+	box-shadow: 2px 2px 10px rgba(0,0,0,.1);
+}
+.bgbox > p{
+	height: 20px;
+	color: #fff;
+	font-size: 12px;
+	line-height: 20px;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	overflow: hidden;
+}
+.bgbox > p:nth-of-type(1){
+	padding-right: 40px;
+	font-size: 14px;
+	margin-bottom: 4px;
+	font-weight: bold;
+}
+.bgbox .pen{
+	position: absolute;
+	top: 5px;
+	right: 5px;
+	width: 40px;
+	height: 40px;
+}
+.bgbox .pen svg{
+	width: 24px;
+	height: 24px;
+	margin: 8px;
+	fill: #fff;
+}
+.tool{
+	box-sizing: border-box;
+	width: calc(100vw - 20px);
+	border-radius: 10px;
+	padding: 10px;
+	margin-left: 10px;
+	margin-bottom: 14px;
+	background-color: #fff;
+	/* box-shadow: 1px 1px 8px rgba(0,0,0,.1); */
+}
+.tool .title{
+	width: 100%;
+	height: 34px;
+	font-weight: bold;
+	line-height: 28px;
+	text-indent: 2px;
+	border-bottom: 1px #eee solid;
+}
+.tool li{
+	float: left;
+	width: 25%;
+	height: 70px;
+}
+.tool li a{
+	display: block;
+	width: 100%;
+	height: 100%;
+	text-align: center;
+}
+.tool li a svg{
+	width: 28px;
+	height: 28px;
+	margin: 12px auto 0;
+	fill: var(--theme-color);
+}
+.tool li a i{
+	display: inline-block;
+	width: 100%;
+	font-size: 12px;
+	color: #aaa;
+	font-style: normal;
+}
+.rolist{
+	box-sizing: border-box;
+	width: calc(100vw - 20px);
+	padding: 0 10px 10px;
+	margin-left: 10px;
+	margin-bottom: 14px;
+	border-radius: 10px;
+	background-color: #fff;
+	/* box-shadow: 1px 1px 8px rgba(0,0,0,.1); */
+}
+.rolist li{
+	height: 42px;
+	width: 100%;
+	border-bottom: 1px #eee dotted;
+}
+.rolist li:last-child{
+	border-bottom: none;
+}
+.rolist li a{
+	box-sizing: border-box;
+	display: block;
+	position: relative;
+	width: 100%;
+	height: 46px;
+	line-height: 46px;
+	padding-left: 46px;
+}
+.rolist li a svg{
+	position: absolute;
+	top: 13px;
+	left: 13px;
+	width: 20px;
+	height: 20px;
+	fill: var(--theme-color);
+}
+.rolist li a span{
+	color: #aaa;
+}
+.rolist li a i{
+	float: right;
+	height: 20px;
+	color: #fff;
+	line-height: 20px;
+	text-align: center;
+	font-style: normal;
+	font-size: 12px;
+	color: var(--theme-color);
+	border-radius: 10px;
+	padding: 0 8px;
+	margin-top: 13px;
+}
+.rolist .full{
+	color: #fff;
+	background-color: var(--theme-color);
+}
+.list{
+	box-sizing: border-box;
+	width: 100%;
+	padding: 0 10px;
+}
+.list li{
+	display: flex;
+	flex-wrap: wrap;
+	position: relative;
+	width: 100%;
+	border-radius: 10px;
+	margin-bottom: 14px;
+	background-color: #fff;
+	/* box-shadow: 1px 1px 8px rgba(0,0,0,.1); */
+}
+.list li a{
+	flex: 1;
+	height: 70px;
+	text-align: center;
+}
+li.towrol a{
+	flex: none;
+	width: 25%;
+}
+.list li a svg{
+	width: 28px;
+	height: 28px;
+	margin: 12px auto 0;
+	fill: var(--theme-color);
+}
+.list li a i{
+	display: inline-block;
+	width: 100%;
+	font-size: 12px;
+	color: #aaa;
+	font-style: normal;
+}
+.list li a i b{
+	font-weight: normal;
+	font-size: 14px;
+	padding: 0 3px;
+	color: var(--theme-color);
+}
+
+/* 菜单弹出层 */
+.side-menu{
+	position: fixed;
+	top: 0;
+	left: 0;
+	z-index: -1;
+	width: 100vw;
+	height: 100vh;
+	background-color: rgba(0,0,0,0);
+	transition: background-color .2s ease, z-index 0s .2s;
+	overflow: hidden;
+}
+.side-menu.active{
+	background-color: rgba(0,0,0,.5);
+	transition: background-color .3s ease, z-index 0s;
+	z-index: 10;
+}
+.side-menu .side-menu-wrap{
+	position: absolute;
+	top: 0;
+	left: -80vw;
+	width: 80vw;
+	height: 100vh;
+	background-color: #fff;
+	overflow-x: none;
+	overflow-y: scroll;
+	transition: all .2s cubic-bezier(0.165, 0.840, 0.440, 1.000);
+	transform: translateZ(0);
+}
+.side-menu.active .side-menu-wrap{
+	transform: translateX(80vw) translateZ(0);
+}
+.side-menu-wrap .user-msg{
+	width: 100%;
+	height: 180px;
+	background: var(--theme-gradient);
+	box-shadow: 0 2px 6px rgba(0,0,0,.1);
+	overflow: hidden;
+}
+.side-menu-wrap .btn{
+	box-sizing: border-box;
+	width: 92%;
+	height: 40px;
+	margin: 14px 4%;
+	padding: 0 14px;
+	text-align: center;
+	line-height: 40px;
+	color: #fff;
+	font-size: 16px;
+	border-radius: 20px;
+	box-shadow: 1px 1px 8px var(--theme-shadow-color);
+	background: var(--theme-gradient);
+}
+.user-msg svg{
+	display: block;
+	width: 180px;
+	height: 180px;
+	margin-left: -80px;
+	opacity: .8;
+}
+.user-msg svg use{
+	fill: #fff;
+}
+.mc-list{
+	box-sizing: border-box;
+	width: 100%;
+	padding: 10px;
+}
+.mc-list li{
+	box-sizing: border-box;
+	position: relative;
+	width: 100%;
+	height: 40px;
+	padding-left: 50px;
+	margin-bottom: 5px;
+	border-bottom: 1px #eee dotted;
+}
+.mc-list li p{
+	width: 100%;
+	height: 40px;
+	line-height: 40px;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+.mc-list li p a{
+	display: block;
+	width: 100%;
+	height: 100%;
+	line-height: 100%;
+	color: inherit;
+	font: inherit;
+}
+.mc-list li span{
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 40px;
+	height: 40px;
+}
+.mc-list li span svg{
+	width: 24px;
+	height: 24px;
+	margin: 8px;
+}
+.mc-list li span svg use{
+	fill: var(--theme-color);
+}
+
+/* 底部菜单 */
+.footer{
+	display: flex;
+	position: fixed;
+	left: 0px;
+	bottom: -20px;
+	z-index: 9;
+	height: 50px;
+	width: 100vw;
+	padding-bottom: 20px;
+	box-shadow: 0 -2px 4px rgba(0,0,0,.05);
+	background-color: #fff;
+	transition: all .3s var(--boon);
+	opacity: 1;
+}
+.footer.fadeOut{
+	transform: translateY(100px);
+	opacity: 0;
+}
+.footer a{
+	flex: 1;
+	height: 50px;
+	text-align: center;
+}
+.footer a svg{
+	width: 22px;
+	height: 22px;
+	margin: 6px auto -5px;
+	fill: #ccc;
+}
+.footer .active svg{
+	fill: var(--theme-color);
+}
+.footer a i{
+	display: inline-block;
+	width: 100%;
+	font-size: 10px;
+	color: #ccc;
+	font-style: normal;
+}
+.footer .active i{
+	color: var(--theme-color);
+}

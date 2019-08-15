@@ -1,0 +1,87 @@
+.copyright{
+	padding-top: 150vh;
+}
+.button{
+	width: 92vw;
+	height: 14vw;
+	border-radius: 7vw;
+	color: #fff;
+	font-size: 1.6rem;
+	text-align: center;
+	line-height: 14vw;
+	margin: 4vw;
+	background: var(--theme-gradient);
+	box-shadow: var(--theme-box-shadow);
+}
+.selector{
+	display: -webkit-box;
+	-webkit-box-align: center;
+	-webkit-box-pack: center;
+	position: fixed;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	z-index: 10;
+	width: 100vw;
+	height: auto;
+	background-color: rgba(0,0,0,.5);
+	transition: opacity .2s ease, transform 0s .2s;
+	-webkit-transition: opacity .2s ease, transform 0s .2s;
+	transform: translateX(100vw) translateZ(0);
+	-webkit-transform: translateX(100vw) translateZ(0);
+	opacity: 0;
+	overflow: hidden;
+}
+.selector.active{
+	transition: opacity .2s ease, transform 0s;
+	-webkit-transition: opacity .2s ease, transform 0s;
+	transform: translateX(0) translateZ(0);
+	-webkit-transform: translateX(0) translateZ(0);
+	opacity: 1;
+}
+.selector .selector-wrap{
+	width: 80%;
+	max-height: 80%;
+	background-color: #fff;
+	overflow: hidden;
+	box-shadow: 0 2px 8px rgba(0,0,0,.2);
+	transform: translateZ(0) scale(.95);
+	-webkit-transform: translateZ(0) scale(.95);
+	-webkit-overflow-scrolling: touch;
+	transition: all .2s ease;
+}
+.selector.active .selector-wrap{
+	transform: translateZ(0) scale(1);
+	-webkit-transform: translateZ(0) scale(1);
+}
+.selector-content{
+	backface-visibility: hidden;
+	-webkit-backface-visibility: hidden;
+	perspective: 1000px;
+	-webkit-perspective: 1000;
+	transform-style: preserve-3d;
+	-webkit-transform-style: preserve-3d;
+	transform: translate3d(0,0,0);
+	-webkit-transform: translate3d(0,0,0);
+}
+.selector-content > p{
+	text-align: center;
+	line-height: 11vw;
+	color: #999;
+	font-size: 1rem;
+}
+.selector-content ul{
+	box-sizing: border-box;
+	width: 100%;
+	padding: 3vw;
+}
+.selector-content ul li{
+	width: 100%;
+	height: 14vw;
+	line-height: 14vw;
+	font-size: 1.6rem;
+	text-indent: .5rem;
+	color: var(--theme-color);
+	border-bottom: 1px #eee dotted;
+}
