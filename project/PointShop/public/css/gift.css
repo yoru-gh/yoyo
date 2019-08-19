@@ -1,0 +1,148 @@
+/* author:Yoruni */
+b{
+	font-size: 13px;
+	font-weight: normal;
+	color: #f55;
+}
+#headTip{
+	position: fixed;
+	top: 0;
+	left: 0;
+	z-index: 99;
+	width: 100%;
+	height: 31px;
+	background-color: #fff;
+	font-size: 16px;
+	color: #93c922;
+	text-align: center;
+	line-height: 31px;
+	border-bottom: 1px #93c922 solid;
+	box-shadow: 0 2px 5px #eee;
+}
+#swiperBody {
+	position: fixed;
+	top: 32px;
+	left: 0px;
+	z-index: 92;
+	width: 100%;
+	overflow: hidden;
+}
+#swiperBodyLi {
+	position: relative;
+	background-color: #f7f7f7;
+	overflow: hidden;
+}
+#swiperBodyLi:after,#showList:after{
+	display: block;
+	height: 0;
+	content: "";
+	clear: both;
+	visibility: hidden;
+}
+#showList{
+	width: 100%;
+}
+#showList li{
+	position: relative;
+	float: left;
+	width: 100%;
+	height: 210px;
+	background-color: #fff;
+	box-sizing: border-box;
+	border: 1px #f7f7f7 solid;
+	overflow: hidden;
+}
+#showList li a{
+	display: -webkit-box;
+	-webkit-box-pack: center;
+}
+#showList li img{
+	display: block;
+	height: 150px;
+	width: 150px;
+	margin: 0 auto;
+	background: url(../img/po.png) no-repeat center;
+	background-size: cover;
+}
+#showList li p:nth-of-type(1){
+	position: absolute;
+	left: 0;
+	bottom: 54px;
+	box-sizing: border-box;
+	width: 100%;
+	height: 20px;
+	padding: 0 10px;
+	font-size: 12px;
+	color: #666;
+	line-height: 20px;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	overflow: hidden;
+}
+#showList li p:nth-of-type(2){
+	box-sizing: border-box;
+	width: 100%;
+	height: 20px;
+	padding: 0 10px;
+	font-size: 12px;
+	font-weight: 600;
+	color: #666;
+	line-height: 20px;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	overflow: hidden;
+}
+#showList li span{
+	display: block;
+	box-sizing: border-box;
+	width: 100%;
+	height: 15px;
+	padding: 0 10px;
+	font-size: 12px;
+	color: #888;
+	line-height: 15px;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	overflow: hidden;
+}
+#showList .haBtn{
+	position: absolute;
+	right: 8px;
+	top: 20px;
+	padding: 5px 10px;
+	border-radius: 5px;
+	font-size: 12px;
+	color: #fff;
+	background-color: #93C922;
+}
+#retuenTop{
+	opacity: .8;
+	position: fixed;
+	right: 5px;
+	bottom: 50px;
+	z-index: 100;
+	width: 30px;
+	height: 30px;
+	border-radius: 15px;
+	background: #93C922 url(../svg/navigation.svg) no-repeat center;
+	display: none;
+}
+#downrefreshTip{
+	position: absolute;
+	top: 40px;
+	left: 0;
+	width: 100%;
+	height: 30px;
+	color: #777;
+	text-align: center;
+	line-height: 30px;
+}#uploadTip{
+	position: absolute;
+	bottom: 50px;
+	left: 0;
+	width: 100%;
+	height: 30px;
+	color: #777;
+	text-align: center;
+	line-height: 30px;
+}

@@ -1,0 +1,175 @@
+body{
+	padding-top: 45px;
+	background-color: #fff;
+	overflow-x: hidden;
+}
+header{
+	text-align: center;
+	line-height: 44px;
+}
+#return{
+	position: absolute;
+	top: 0;
+	right: 0;
+	width: 45px;
+	height: 45px;
+	background: url(../svg/return.svg) no-repeat center;
+	background-size: 26px;
+}
+#openTable{
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	z-index: 1;
+	padding: 10px 20px;
+	line-height: 1em;
+	color: #fff;
+	background-color: #A35BA6;
+	border-radius: 3px;
+	transition: all .3s;
+	-webkit-transition: all .3s;
+	transform: translateX(-50%) translateY(-50%);
+	-webkit-transform: translateX(-50%) translateY(-50%);
+}
+#openTable.active{
+	transform: translateX(-90%) translateY(-50%);
+	-webkit-transform: translateX(-90%) translateY(-50%);
+	opacity: 0;
+}
+#content{
+	transition: transform .3s ease, opacity .3s ease, z-index 0s .4s;
+	-webkit-transition: transform .3s ease, opacity .3s ease, z-index 0s .4s;
+	transform: translateX(100px);
+	-webkit-transform: translateX(100px);
+	opacity: 0;
+	z-index: -1;
+}
+#content.active{
+	transition: transform .3s ease, opacity .3s ease, z-index 0s;
+	-webkit-transition: transform .3s ease, opacity .3s ease, z-index 0s;
+	transform: translateX(0);
+	-webkit-transform: translateX(0);
+	opacity: 1;
+	z-index: 11;
+}
+#tableMes{
+	box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	padding: 12px;
+}
+#tableMes > li{
+	box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	position: relative;
+	padding: 10px 0 10px 20px;
+	background: url(../svg/radioed.svg) no-repeat left center;
+	background-size: 14px;
+	margin-bottom: 10px;
+}
+#tableMes > li *{
+	font-size: 15px;
+}
+#tableMes > li span i{
+	font-style: normal;
+	color: #A35BA6;
+	padding: 0 4px;
+}
+.listText{
+	float: right;
+	margin-right: 7px;
+}
+.buybtn{
+	position: absolute;
+	right: 5px;
+	top: 5px;
+	width: 90px;
+	height: 30px;
+}
+.buybtn li{
+	position: absolute;
+	top: 0;
+	width: 30px;
+	height: 30px;
+	overflow: hidden;
+}
+.buybtn .minus{
+	left: 0;
+	background: url(../svg/minus.svg) no-repeat center;
+	background-size: 28px;
+}
+.buybtn .text{
+	left: 30px;
+	font-size: 12px;
+	text-align: center;
+	line-height: 30px;
+}
+.buybtn .plus{
+	left: 60px;
+	float: right;
+	background: url(../svg/plus.svg) no-repeat center;
+	background-size: 28px;
+}
+#tea .listText,#tissue .listText{
+	padding-right: 22px;
+	background: url(../svg/right.svg) no-repeat right center;
+	background-size: 10px;
+}
+#tableMes #guestMes{
+	margin-bottom: 0;
+	background: none;
+	padding: 10px 0;
+}
+#guestMes textarea{
+	box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	width: 100%;
+	min-height: 80px;
+	padding: 10px;
+	border: 2px #3EB96B dotted;
+	border-radius: 5px;
+}
+#goOpen{
+	position: absolute;
+	top: 3px;
+	right: 0;
+	padding: 10px 20px;
+	line-height: 1em;
+	color: #fff;
+	background-color: #A35BA6;
+	border-radius: 3px;
+}
+#sellist{
+	box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	position: fixed;
+	top: 0;
+	right: -160px;
+	bottom: 0;
+	z-index: 10;
+	width: 160px;
+	padding: 12px;
+	background-color: #fff;
+	transition: all .3s ease;
+	-webkit-transition: all .3s ease;	
+}
+#sellist.active{
+	transform: translateX(-160px);
+	-webkit-transform: translateX(-160px);
+}
+#sellist p{
+	height: 44px;
+	line-height: 44px;
+	text-align: center;
+	color: #fff;
+	margin: -12px -12px 0 -12px;
+	background-color: #A35BA6;
+}
+#sellist li{
+	height: 39px;
+	line-height: 39px;
+	color: #888;
+	border-bottom: 1px #f4f4f4 solid;
+	overflow: hidden;
+	white-space: normal;
+	text-overflow: hidden;
+}

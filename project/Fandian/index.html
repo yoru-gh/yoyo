@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1, user-scalable=no" />
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <meta name="author" content="Yoruni">
+        <script type="text/javascript" src="public/js/mui.min.js"></script>
+        <title>首页</title>
+        <style type="text/css">
+        	*{
+        		padding: 0;
+        		margin: 0;
+        		border: 0;
+        		overflow: hidden;
+        		font-family: Microsoft YaHei,sans-serif;
+        		-webkit-tap-highlight-color: transparent;
+        	}
+        	body{
+        		width: 100%;
+        		height: 100%;
+        		background-color: #3EB96B;
+        	}
+        	#iimg{
+        		position: fixed;
+        		top: 50%;
+        		left: 50%;
+        		width: 120px;
+        		height: 120px;
+        		transform: translateX(-50%) translateY(-200%) scale(.5);
+        		-webkit-transform: translateX(-50%) translateY(-200%) scale(.5);
+        		opacity: 0;
+        	}
+        	#iimg.active{
+        		transition: transform .3s cubic-bezier(.35, .24, .58, 1.42), opacity .3s;
+        		-webkit-transition: transform .3s cubic-bezier(.35, .24, .58, 1.42), opacity .3s;
+        		transform: translateX(-50%) translateY(-60%) scale(1) rotateZ(0deg);
+        		-webkit-transform: translateX(-50%) translateY(-60%) scale(1) rotateZ(0deg);
+        		opacity: 1;
+        	}
+        	#iimg.active2{
+        		transform: translateX(-50%) translateY(-60%) scale(1) rotateZ(0deg);
+        		-webkit-transform: translateX(-50%) translateY(-60%) scale(1) rotateZ(0deg);
+        	}
+        	#iimg.active3{
+        		transform-origin: 120px;
+        		-webkit-transform-origin: 120px;
+        		transform: translateX(-50%) translateY(-60%) scale(1) rotateZ(30deg);
+        		-webkit-transform: translateX(-50%) translateY(-60%) scale(1) rotateZ(30deg);
+        	}
+        	#wmes{
+        		position: fixed;
+        		top: 50%;
+        		left: 50%;
+        		width: 100%;
+        		height: 30px;
+        		font-size: 18px;
+        		color: #fff;
+        		line-height: 33px;
+        		text-align: center;
+        		transition: all .6s .2s;
+        		-webkit-transition: all .6s .2s;
+        		transform: translateX(-50%) translateY(40px);
+        		-webkit-transform: translateX(-50%) translateY(40px);
+        		opacity: 0;
+        	}
+        	#wmes.active{
+        		opacity: 1;
+        	}
+        </style>
+    </head>
+    <body>
+    	<img id="iimg" src="public/svg/logo.svg"/>
+    	<span id="wmes">饭点</span>
+        <script type="text/javascript">
+        	mui.init({
+				swipeBack: false,
+				gestureConfig: {
+					doubletap: true
+				}
+			});
+        	window.onload = function(){
+        		var iimg = document.getElementById("iimg"),
+	        		wmes = document.getElementById("wmes");
+	        	setTimeout(function(){
+	        		iimg.classList.add("active");
+	        	},200);
+	        	setTimeout(function(){
+	        		iimg.classList.add("active2");
+	        	},500);
+	        	setTimeout(function(){
+	        		iimg.classList.add("active3");
+	        		wmes.classList.add("active");
+	        	},900);
+				setTimeout(function () {
+					mui.openWindow({
+						id: 'home.html',
+					    url: 'template/home.html',
+					    styles: {
+							top: '0px',
+							right: '0px',
+							bottom: '0px',
+							left: '0px',
+							hardwareAccelerated: true
+						},
+					    extras:{
+					      //自定义扩展参数，可以用来处理页面间传值
+					    },
+					    createNew: false, // 是否重复创建同样id的webview，默认为false:不重复创建，直接显示
+					    show:{
+					    	autoShow: true, // 页面loaded事件发生后自动显示，默认为true
+					    	aniShow: 'fade-in', // 页面显示动画，默认为”slide-in-right“；
+					    	duration: 400 // 页面动画持续时间，Android平台默认100毫秒，iOS平台默认200毫秒；
+					    },
+					    waiting:{
+					    	autoShow: false  // 自动显示等待框，默认为true
+					    }
+					});
+				}, 3000);
+        	}
+        </script>
+    </body>
+</html>

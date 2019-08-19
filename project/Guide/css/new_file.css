@@ -1,0 +1,212 @@
+.location {
+	width: 1200px;
+	height: 29px;
+	margin: 0 auto;
+	border-bottom: 1px solid #df2a61;
+}
+
+.location li {
+	float: left;
+	min-width: 20px;
+	line-height: 30px;
+	color: #7f0101;
+	margin-right: 5px;
+}
+
+.contentBox {
+	width: 1200px;
+	margin: 0 auto;
+	margin-top: 15px;
+	position: relative;
+}
+
+.leftNav {
+	width: 188px;
+	float: left;
+}
+
+.menus {
+	width: 188px;
+	margin: auto;
+	background-color: #f4f4f4;
+	border: 1px solid #e3e3e3;
+}
+
+.menus a {
+	display: block;
+	widows: 188px;
+	line-height: 30px;
+	color: #888;
+	font-weight: bold;
+}
+
+.menus li {
+	line-height: 30px;
+	text-align: center;
+	width: 188px;
+}
+
+.second li {
+	background: #fff;
+}
+
+.second a {
+	color: #333;
+}
+
+.second1 li {
+	background: #fff;
+}
+
+.second1 a {
+	color: #333;
+}
+
+.thrid li {
+	background: #f2f2f2;
+}
+
+.thrid a {
+	color: #333;
+}
+
+.fourth li {
+	border-bottom: 1px dashed #d2d2d2;
+	background: #fff;
+}
+
+.menus .menubox {
+	background-color: #df2a61;
+}
+
+.menubox a {
+	color: #fff;
+}
+
+.moreService {
+	margin-top: 50px;
+	width: 188px;
+	border: 1px solid #d2d2d2
+}
+
+.moreService li {
+	width: 188px;
+	line-height: 30px;
+	background: #f2f2f2;
+	text-align: center;
+	border-bottom: 1px solid #d2d2d2
+}
+
+.hidden {
+	border-bottom: none;
+}
+
+.rightcontent {
+	width: 978px;
+	min-height: 800px;
+	border: 1px solid #d2d2d2;
+	float: right;
+	margin-bottom: 20px;
+}
+
+#title {
+	display: block;
+	width: 958px;
+	height: 30px;
+	background-color: #df2a61;
+	color: #fff;
+	padding-left: 20px;
+	line-height: 30px;
+	font-size: 14px;
+}
+
+#Bigtitle {
+	display: block;
+	width: 950px;
+	line-height: 60px;
+	margin-left: 30px;
+	font-size: 14px;
+	color: #333;
+	font-size: 24px;
+	font-family: '微软雅黑';
+	text-align: center;
+	text-shadow: 2px 1px 2px #d2d2d2;
+	color: #651526;
+}
+
+#referralBox {
+	width: 900px;
+	margin: 0 39px;
+}
+
+#referralBox h4 {
+	font-family: '微软雅黑';
+	font-size: 18px;
+}
+
+#referralBox ul {
+	margin: 20px 0;
+}
+
+#referralBox li {
+	width: 600px;
+	margin-right: 25px;
+	margin-left: 50px;
+	display: inline-block;
+	line-height: 30px;
+	font-size: 16px;
+}
+
+#referralBox li span {
+	float: right;
+}
+
+#referralBox a:hover {
+	color: #df2a61;
+	border-bottom: 1px solid #df2a61;
+}
+
+.leftNav {
+	width: 188px;
+	border: 1px solid #e3e3e3;
+	float: left;
+}
+
+.leftNav li {
+	width: 158px;
+	height: 40px;
+	line-height: 40px;
+	padding-left: 30px;
+	background-color: #f4f4f4;
+	cursor: pointer;
+	position: relative;
+}
+
+.leftNav a {
+	display: block;
+	width: 138px;
+	height: 40px;
+}
+
+.ICON {
+	position: absolute;
+	top: 14px;
+	left: 18px;
+	display: block;
+	width: 12px;
+	height: 12px;
+	background: url(../img/icon-title_03.png) center no-repeat;
+}
+
+.leftNav .bg {
+	background: #df2a61;
+	color: #fff;
+}
+
+.bg span {
+	background: url(../img/ICON-11_03.png) center no-repeat;
+}
+
+.bg a {
+	color: #fff;
+}
