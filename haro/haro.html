@@ -15,53 +15,13 @@
 	<!-- <body></body> -->
 	<body>
 		<p class="title">Haro 组件库</p>
-		<p class="title2">基于 ES6 以及 Vue 并且还有好看的 UI</p>
-		<ul>
-			<!-- <li>
-				<a href="log.html">LOGIN<i>MongoDB 登录测试</i></a>
-			</li>
-			<li>
-				<a href="reg.html">REGISTER<i>MongoDB 注册测试</i></a>
-			</li>
-			<li>
-				<a id="user">USER<i>个人中心，JADE 模板引擎生成测试</i></a>
-			</li> -->
-			<li>
-				<a href="responsive.html">RESPONSIVE<i>基于 vw vh rem 的手机网页模型</i></a>
-			</li>
-			<li>
-				<a href="slide.html">SLIDE / BANNER<i>划动型焦点图</i></a>
-			</li>
-			<li>
-				<a href="preload.html">PRELOAD<i>列表预加载</i></a>
-			</li>
-			<li>
-				<a href="refresh.html">DROP TO REFRESH<i>下拉刷新，目前适用范围比较小</i></a>
-			</li>
-			<li>
-				<a href="select.html">SELECTOR<i>列表选择器/不会引起背景层滚动的弹出框</i></a>
-			</li>
-			<li>
-				<a href="tips.html">TIPS<i>各种提示组件</i></a>
-			</li>
-			<li>
-				<a href="switch.html">SWITCH<i>各种开关，纯CSS</i></a>
-			</li>
-			<li>
-				<a href="parabola.html">PARABOLA<i>抛物线运动动画，用于加购物车、收藏</i></a>
-			</li>
-			<li>
-				<a href="load.html">LODING<i>等待动画，加载动画</i></a>
-			</li>
-			<li>
-				<a href="parallax.html">PARALLAX<i>滚动视差, Android 系统下体验较好</i></a>
-			</li>
-			<li>
-				<a href="wave.html">WAVE<i>纯CSS波浪</i></a>
-			</li>
-			<li>
-				<a href="icon.html">ICON<i>SVG sprite 矢量图标，最后更新日期 2018/05/16</i></a>
-			</li>
+		<p class="title2">组件库</p>
+		<ul id="toolList">
+			<template v-for='item in list'>
+				<li v-show="item.show">
+					<a :href="item.url">{{ item.title }}<i>{{ item.tip }}</i></a>
+				</li>
+			</template>
 		</ul>
 		<p class="title">示例</p>
 		<a href="../yomall/yomall.html" class="button">YOMALL 商城</a>
@@ -69,16 +29,6 @@
 		<span class="copyright"></span>
 		<div class="toast" id="toast" active="false"></div>
 		<script type="text/javascript" src="../js/yoruni.js"></script>
-		<!-- <script type="text/javascript">
-			var user = document.getElementById("user");
-			user.touch((event) => {
-				var cer = cookies.get("CER");
-				if (cer) {
-					window.location.href = URLstr+"user?"+cer;
-				} else {
-					tip.toast("请先登录")
-				}
-			})
-		</script> -->
+		<script type="text/javascript" src="js/haro.js"></script>
 	</body>
 </html>
