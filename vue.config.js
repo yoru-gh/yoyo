@@ -1,7 +1,7 @@
 const path = require('path')
 
 function resolve(dir) {
-  return path.join(__dirname, '.', dir)
+	return path.join(__dirname, '.', dir)
 }
 
 module.exports = {
@@ -13,12 +13,13 @@ module.exports = {
 		.rule('svg-sprite-loader')
 		.test(/\.svg$/)
 		.include
-		.add(resolve('src/icons')) //处理svg目录
+		.add(resolve('src/assets/icon')) // 处理svg目录
 		.end()
 		.use('svg-sprite-loader')
 		.loader('svg-sprite-loader')
 		.options({
-			symbolId: 'icon-[name]'
+			// symbolId 配置 sprite.svg 文件里每个 symbol 的 id 前缀，会默认添加一个 sprite_
+			symbolId: '[name]'
 		})
 	},
 	configureWebpack: () => ({})

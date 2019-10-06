@@ -35,22 +35,22 @@
 		}
 	}
 
-	var UA = navigator.userAgent;
-	if (UA.indexOf("Chrome") > -1) {
-		var CHROME_VER_REX = /Chrome\/[\d.]+/gi;
-		var BVer = parseInt(UA.match(CHROME_VER_REX)[0].split("/")[1]) || 60;
-	}
-	if (window.DeviceMotionEvent && DEVICE == "Android" && BVer > 64) {
-		window.setTimeout(function(){
-			background.classList.add("motion");
-			background.classList.remove("active");
-			// devicemotion API 只是个实验性功能, Chrome 未来将会移除该 API
-			window.addEventListener('devicemotion', deviceMotionHandler, false);
-			window.addEventListener("compassneedscalibration", event => { // 校准
-				event.preventDefault();
-			}, true);
-		}, 6200)
-	}
+	// var UA = navigator.userAgent;
+	// if (UA.indexOf("Chrome") > -1) {
+	// 	var CHROME_VER_REX = /Chrome\/[\d.]+/gi;
+	// 	var BVer = parseInt(UA.match(CHROME_VER_REX)[0].split("/")[1]) || 60;
+	// }
+	// if (window.DeviceMotionEvent && DEVICE == "Android" && BVer > 64) {
+	// 	window.setTimeout(function(){
+	// 		background.classList.add("motion");
+	// 		background.classList.remove("active");
+	// 		// devicemotion API 只是个实验性功能, Chrome 未来将会移除该 API
+	// 		window.addEventListener('devicemotion', deviceMotionHandler, false);
+	// 		window.addEventListener("compassneedscalibration", event => { // 校准
+	// 			event.preventDefault();
+	// 		}, true);
+	// 	}, 6200)
+	// }
 
 	window.setTimeout(function(){
 		background.classList.add("active")

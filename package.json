@@ -5,10 +5,12 @@
   "scripts": {
     "project": "vue-cli-service serve",
     "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint"
+    "lint": "vue-cli-service lint",
+    "gui": "vue ui"
   },
   "dependencies": {
     "core-js": "^2.6.5",
+    "svg-sprite-loader": "^4.1.6",
     "vue": "^2.6.10",
     "vue-router": "^3.0.3",
     "vuex": "^3.0.1"
@@ -22,7 +24,6 @@
     "eslint-plugin-vue": "^5.0.0",
     "less": "^3.0.4",
     "less-loader": "^5.0.0",
-    "svg-sprite-loader": "^4.1.6",
     "vue-template-compiler": "^2.6.10"
   }
 }
