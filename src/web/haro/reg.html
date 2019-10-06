@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<!-- <html><head><title></title></head><body></body></html> -->
+<html lang="zh-cmn-Hans">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1, user-scalable=no">
+		<meta name="theme-color" content="#fff">
+		<meta name="author" content="Yoruni">
+		<title>REGISTER</title>
+		<link rel="icon" type="image/png" href="../img/favicon.png">
+		<link rel="stylesheet" type="text/css" href="../css/yoruni.css">
+		<link rel="stylesheet" type="text/css" href="css/log.css">
+	</head>
+	<!-- <body></body> -->
+	<body>
+		<div class="content">
+			<ul>
+				<li>
+					<span>USERNAME</span>
+					<input id="username" type="text" placeholder="输入用户名...">
+				</li>
+				<li>
+					<span>SEX</span>
+					<div class="switch">
+						<input id="sex" type="checkbox" checked>
+						<span></span>
+					</div>
+				</li>
+				<li>
+					<span>E-MAIL</span>
+					<input id="email" type="email" placeholder="输入邮箱...">
+				</li>
+				<li>
+					<span>PASSWORD</span>
+					<input id="password" type="password" placeholder="输入密码...">
+				</li>
+				<li>
+					<span>REENTER</span>
+					<input id="repassword" type="password" placeholder="确认密码...">
+				</li>
+			</ul>
+		</div>
+		<button class="button" id="regButton">REGISTER</button>
+		<div class="toast" id="toast" active="false"></div>
+		<script type="text/javascript" src="../js/yoruni.js"></script>
+		<script type="text/javascript" src="js/reg.js"></script>
+	</body>
+</html>

@@ -1,0 +1,363 @@
+{
+	"index.html": {
+		"resources": [
+			"public/css/mui.css",
+			"public/js/zepto.min.js",
+			"public/js/velocity.min.js",
+			"public/css/reset.css",
+			"public/css/index.css",
+			"public/js/TweenMax.min.js",
+			"public/img/nice.png",
+			"public/js/index.js",
+			"public/js/mui.js",
+			"public/video/MHX.mp4",
+			"template/home.html",
+			"public/img/tou.jpg",
+			"public/img/red.png",
+			"public/img/orange.png",
+			"public/img/blue.png",
+			"public/img/pink.png",
+			"public/img/yellow.png",
+			"public/img/purple.png",
+			"public/img/green.png",
+			"public/img/more.png",
+			"public/fonts/mui.ttf",
+			"public/svg/pause.svg",
+			"public/svg/play.svg",
+			"public/img/welcome.png",
+			"public/img/1080.png",
+			"public/img/720.png"
+		],
+		"refer": [
+			"template/home.html",
+			"template/leftMenu.html"
+		]
+	},
+	"template/home.html": {
+		"resources": [
+			"public/video/mhx.mp4",
+			"public/css/home.css",
+			"public/js/home.js",
+			"public/img/nice.png",
+			"public/css/mui.css",
+			"public/js/zepto.min.js",
+			"public/css/reset.css",
+			"public/js/TweenMax.min.js",
+			"public/js/mui.js",
+			"public/svg/play.svg",
+			"public/svg/pause.svg",
+			"public/img/more.png",
+			"public/img/blue.png",
+			"public/css/index.css",
+			"public/js/index.js",
+			"public/img/red.png",
+			"public/img/orange.png",
+			"public/img/tou.jpg",
+			"public/img/pink.png",
+			"public/img/yellow.png",
+			"public/img/purple.png",
+			"public/img/green.png",
+			"public/img/logo.png",
+			"public/svg/star.svg",
+			"public/svg/gift.svg",
+			"public/svg/share.svg",
+			"public/img/guide.png",
+			"public/img/star.png",
+			"public/img/gift.png",
+			"public/img/share.png",
+			"public/video/bird.mp4",
+			"template/homeWapper.html",
+			"public/video/mov.mp4",
+			"public/img/decorate.png",
+			"public/img/po.png",
+			"public/img/view4.jpg",
+			"public/img/view1.jpg",
+			"public/img/view3.jpg",
+			"public/img/view2.jpg",
+			"public/img/gifted.png",
+			"public/img/guided.png",
+			"public/img/shared.png",
+			"public/img/stared.png",
+			"public/img/erwei.png",
+			"public/img/scan.png"
+		],
+		"refer": [
+			"template/menu.html",
+			"template/homeWapper.html",
+			"template/void.html",
+			"template/active.html",
+			"template/other.html",
+			"template/scan.html",
+			"template/activeWarpper.html",
+			"template/call.html"
+		]
+	},
+	"template/leftMenu.html": {
+		"resources": [
+			"public/css/mui.css",
+			"public/fonts/mui.ttf",
+			"public/js/mui.js"
+		],
+		"refer": []
+	},
+	"template/menu.html": {
+		"resources": [
+			"public/fonts/mui.ttf",
+			"public/css/mui.css",
+			"public/js/mui.js",
+			"public/js/menu.js",
+			"public/css/menu.css",
+			"public/js/zepto.min.js",
+			"public/css/reset.css",
+			"public/js/TweenMax.min.js",
+			"public/img/welcome.png",
+			"public/img/label.png",
+			"public/img/tou.jpg",
+			"public/img/userbg.png",
+			"public/svg/label.svg",
+			"public/img/bg.png"
+		],
+		"refer": [
+			"template/login.html",
+			"template/mesedit.html",
+			"template/mes.html",
+			"template/other.html"
+		]
+	},
+	"template/homeWapper.html": {
+		"resources": [
+			"public/video/mov.mp4",
+			"public/svg/pause.svg",
+			"public/css/homeWapper.css",
+			"public/svg/play.svg",
+			"public/js/homeWapper.js",
+			"public/css/mui.css",
+			"public/js/zepto.min.js",
+			"public/css/reset.css",
+			"public/js/TweenMax.min.js",
+			"public/js/mui.js"
+		]
+	},
+	"template/void.html": {
+		"resources": [
+			"public/img/720.png",
+			"public/js/mui.js"
+		]
+	},
+	"template/active.html": {
+		"resources": [
+			"public/css/active.css",
+			"public/js/active.js",
+			"public/css/mui.css",
+			"public/js/zepto.min.js",
+			"public/css/reset.css",
+			"public/js/TweenMax.min.js",
+			"public/js/mui.js",
+			"public/svg/left.svg",
+			"public/img/red.png",
+			"public/img/orange.png",
+			"public/img/star.png",
+			"public/img/po.png",
+			"public/img/blue.png",
+			"public/img/pink.png",
+			"public/img/gift.png",
+			"public/img/share.png",
+			"public/img/guide.png",
+			"public/img/purple.png",
+			"public/img/green.png",
+			"public/img/more.png",
+			"public/img/view4.jpg",
+			"public/img/view1.jpg",
+			"public/img/view3.jpg",
+			"public/img/view2.jpg",
+			"public/js/footerAnimate.js"
+		],
+		"refer": [
+			"template/void.html"
+		]
+	},
+	"template/login.html": {
+		"resources": [
+			"public/css/laraf.css",
+			"public/js/zepto.min.js",
+			"public/svg/left.svg",
+			"public/svg/ulock.svg",
+			"public/css/reset.css",
+			"public/svg/userl.svg",
+			"public/js/login.js",
+			"public/css/mui.css",
+			"public/js/mui.js",
+			"public/img/bg.png"
+		],
+		"refer": [
+			"template/forget.html",
+			"template/register.html"
+		]
+	},
+	"template/register.html": {
+		"resources": [
+			"public/svg/ulabel.svg",
+			"public/js/register.js",
+			"public/css/laraf.css",
+			"public/img/bg.png",
+			"public/css/mui.css",
+			"public/js/zepto.min.js",
+			"public/svg/left.svg",
+			"public/svg/ulock.svg",
+			"public/css/reset.css",
+			"public/svg/userl.svg",
+			"public/js/mui.js"
+		]
+	},
+	"template/forget.html": {
+		"resources": [
+			"public/svg/ulabel.svg",
+			"public/js/forget.js",
+			"public/css/laraf.css",
+			"public/img/bg.png",
+			"public/css/mui.css",
+			"public/js/zepto.min.js",
+			"public/svg/left.svg",
+			"public/svg/ulock.svg",
+			"public/css/reset.css",
+			"public/svg/userl.svg",
+			"public/js/mui.js"
+		]
+	},
+	"template/mesedit.html": {
+		"resources": [
+			"public/svg/left.svg",
+			"public/js/mesedit.js",
+			"public/css/mesedit.css",
+			"public/img/red.png",
+			"public/img/blue.png",
+			"public/css/mui.css",
+			"public/js/zepto.min.js",
+			"public/img/pink.png",
+			"public/css/reset.css",
+			"public/img/green.png",
+			"public/img/purple.png",
+			"public/js/mui.js",
+			"public/img/tou.jpg"
+		]
+	},
+	"template/mes.html": {
+		"resources": [
+			"public/css/mes.css",
+			"public/svg/left.svg",
+			"public/js/mes.js",
+			"public/img/red.png",
+			"public/img/blue.png",
+			"public/css/mui.css",
+			"public/img/tou.jpg",
+			"public/js/zepto.min.js",
+			"public/img/pink.png",
+			"public/css/reset.css",
+			"public/img/green.png",
+			"public/img/purple.png",
+			"public/js/mui.js"
+		],
+		"refer": [
+			"template/mesedit.html"
+		]
+	},
+	"template/other.html": {
+		"resources": [
+			"public/img/red.png",
+			"public/img/orange.png",
+			"public/css/mui.css",
+			"public/svg/left.svg",
+			"public/css/other.css",
+			"public/js/mui.js",
+			"public/img/blue.png",
+			"public/img/view3.jpg",
+			"public/js/zepto.min.js",
+			"public/img/pink.png",
+			"public/css/reset.css",
+			"public/img/yellow.png",
+			"public/js/other.js",
+			"public/img/green.png",
+			"public/img/gift.png"
+		]
+	},
+	"template/scan.html": {
+		"resources": [
+			"public/svg/left.svg",
+			"public/css/scan.css",
+			"public/js/scan.js",
+			"public/img/red.png",
+			"public/img/blue.png",
+			"public/img/orange.png",
+			"public/css/mui.css",
+			"public/js/zepto.min.js",
+			"public/img/pink.png",
+			"public/css/reset.css",
+			"public/img/yellow.png",
+			"public/img/green.png",
+			"public/js/mui.js"
+		]
+	},
+	"template/activeWarpper.html": {
+		"resources": [
+			"public/svg/left.svg",
+			"public/css/activeWarpper.css",
+			"public/js/activeWarpper.js",
+			"public/css/mui.css",
+			"public/img/view4.jpg",
+			"public/js/zepto.min.js",
+			"public/css/reset.css",
+			"public/js/mui.js"
+		]
+	},
+	"template/call.html": {
+		"resources": [
+			"public/css/call.css",
+			"public/svg/search.svg",
+			"public/svg/left.svg",
+			"public/js/call.js",
+			"public/svg/guide.svg",
+			"public/img/bg.png",
+			"public/css/mui.css",
+			"public/img/tou.jpg",
+			"public/js/zepto.min.js",
+			"public/css/reset.css",
+			"public/img/star.png",
+			"public/js/mui.js",
+			"template/callWarpper.html",
+			"public/fonts/mui.ttf"
+		],
+		"refer": [
+			"template/guide.html",
+			"template/callWarpper.html"
+		]
+	},
+	"template/guide.html": {
+		"resources": [
+			"public/svg/male.svg",
+			"public/js/guide.js",
+			"public/css/guide.css",
+			"public/css/mui.css",
+			"public/img/tou.jpg",
+			"public/js/zepto.min.js",
+			"public/svg/left.svg",
+			"public/css/reset.css",
+			"public/js/mui.js"
+		]
+	},
+	"template/callWarpper.html": {
+		"resources": [
+			"public/css/callWarpper.css",
+			"public/js/callWarpper.js",
+			"public/css/mui.css",
+			"public/img/tou.jpg",
+			"public/js/zepto.min.js",
+			"public/css/reset.css",
+			"public/img/star.png",
+			"public/svg/guide.svg",
+			"public/js/mui.js"
+		],
+		"refer": [
+			"template/guide.html"
+		]
+	}
+}

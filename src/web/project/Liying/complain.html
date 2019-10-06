@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<!-- <html><head><title></title></head><body></body></html> -->
+<html lang="zh-cmn-Hans">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1, user-scalable=no">
+		<meta name="author" content="Yoruni">
+		<link rel="stylesheet" type="text/css" href="css/yoruni.css">
+		<link rel="stylesheet" type="text/css" href="css/weui.icon.css">
+		<link rel="stylesheet" type="text/css" href="css/style.css">
+		<script type="text/javascript" src="js/yoruni.js"></script>
+		<title>投诉页</title>
+	</head>
+	<body>
+		<div class="nowState">我要投诉</div>
+		<div class="listWrap">
+			<ul class="list">
+				<li class="title"><i class="weui-icon-warn"></i>输入您要投诉的类型</li>
+				<li id="selectType" value="不选">
+					<span>类型</span>
+					<i class="right-icon"></i>
+					<span class="right-span">不选</span>
+				</li>
+			</ul>
+			<ul class="list">
+				<li class="title"><i class="weui-icon-warn"></i>输入您要投诉的详细信息</li>
+				<li id="textareaBox">
+					<textarea id="task" class="task">要求与详细...</textarea>
+				</li>
+			</ul>
+		</div>
+		<div class="complainPic">
+			<p>上传证据</p>
+			<div id="picWrap" class="picWrap">
+				<span>
+					<input type="file" id="pic1">
+					<img src="img/add.png">
+				</span>
+				<span>
+					<input type="file" id="pic2">
+					<img src="img/add.png">
+				</span>
+				<span>
+					<input type="file" id="pic3">
+					<img src="img/add.png">
+				</span>
+			</div>
+			<span>点击添加图片, 至少上传一张照片</span>
+		</div>
+		<a href="" class="weui-btn weui-btn-warn">提交投诉</a>
+		<!-- 选择列表 -->
+		<div id="selectWrap">
+			<ul id="selscter"></ul>
+		</div>
+		<div id="mask"></div>
+	</body>
+	<script type="text/javascript" src="js/complain.js"></script>
+</html>
