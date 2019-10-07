@@ -7,10 +7,10 @@
 			<span class="text">主页 HOMEPAGE <i>ホームページ</i></span>
 		</div>
 		<div class="content">
-			<router-link to="/">H</router-link>
+			<!-- <router-link to="/">H</router-link> -->
+			<router-link to="/haro">H</router-link>
 			<router-link to="/">Y</router-link>
-			<router-link to="/">W</router-link>
-			<router-link to="/">项目</router-link>
+			<router-link class="pro" to="/">项目</router-link>
 		</div>
 		<a class="github" href="https://github.com/KazenoYoruni/KazenoYoruni.github.io" target="_blank">
 			<icon-sprite icon-name="github-line"/>
@@ -18,7 +18,7 @@
 	</div>
 </template>
 
-<style lang="less">
+<style lang="less" scoped>
 @keyframes fadein {
 	0% {
 		opacity: .2;
@@ -81,7 +81,7 @@
 			transition: all .4s ease;
 			opacity: .2;
 
-			svg {
+			/deep/svg {
 				width: 170vw;
 				height: 170vw;
 			}
@@ -137,7 +137,7 @@
 			transform: translateX(-10vw);
 			transition: all .4s ease;
 
-			svg {
+			/deep/svg {
 				width: 120vw;
 				height: 120vw;
 			}
@@ -218,7 +218,7 @@
 			opacity: .9;
 
 			&:nth-of-type(1) {
-				right: 40vw;
+				right: 8vw;
 			}
 
 			&:nth-of-type(2) {
@@ -226,10 +226,10 @@
 			}
 
 			&:nth-of-type(3) {
-				right: 8vw;
+				right: 40vw;
 			}
 
-			&:nth-of-type(4) {
+			&.pro {
 				left: 8vw;
 				width: 16vw;
 				font-size: 1.4rem;
@@ -253,7 +253,8 @@
 		span {
 			display: inline-block;
 			margin-top: 2vw;
-			svg {
+
+			/deep/svg {
 				width: 2.4rem;
 				height: 2.4rem;
 				fill: #fff;
@@ -262,7 +263,6 @@
 	}
 }
 </style>
-
 <script>
 import IconSprite from '@/components/SvgSprite.vue'
 
@@ -274,7 +274,7 @@ export default {
 		}
 	},
 	mounted () {
-		// Vue 实例内部的 setTimeout 需要用箭头函数
+		// Vue 实例内部 this 指向问题 setTimeout 需要用箭头函数
 		setTimeout(() => {
 			this.isActive = true
 		}, 100)
