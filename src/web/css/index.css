@@ -189,3 +189,28 @@ body{
 	width: 16vw;
 	font-size: 1.4rem;
 }
+
+.github {
+	position: absolute;
+	top: 4vw;
+	left: 8vw;
+	height: 12vw;
+	width: 12vw;
+	text-align: center;
+	line-height: 12vw;
+	border-radius: 6vw;
+	opacity: .9;
+	box-shadow: var(--theme-box-shadow);
+	background-image: var(--theme-gradient);
+}
+
+.github span {
+	display: inline-block;
+	margin-top: 2vw;
+}
+
+.github span svg {
+	width: 2.4rem;
+	height: 2.4rem;
+	fill: #fff;
+}
