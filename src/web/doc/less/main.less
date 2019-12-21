@@ -1,0 +1,214 @@
+@import 'theme'; // 导入 highlight.js 的主题
+
+@font-face {
+	font-family: 'SourceCodePro Regular';
+	src: url('../font/SourceCodePro-Regular.ttf');
+}
+
+::-webkit-scrollbar {
+	display: none;
+}
+
+* {
+	font-family: 'Microsoft YaHei';
+	margin: 0;
+	padding: 0;
+	border: none;
+	color: #dcdcdc;
+}
+
+body {
+	background-color: #424242;
+	overflow: hidden;
+}
+
+h2 {
+	line-height: 78px;
+	padding-top: 24px;
+}
+
+p {
+	line-height: 24px;
+	padding: 12px 0;
+}
+
+.copyright {
+	height: 86px;
+	line-height: 86px;
+	font-size: 12px;
+	color: #888;
+	text-align: center;
+}
+
+.clearfix::after {
+	content: '';
+	display: block;
+	clear: both;
+	height: 0;
+	visibility: hidden;
+}
+
+.side-box {
+	box-sizing: border-box;
+	position: fixed;
+	top: 0;
+	left: 0;
+	z-index: 999;
+	height: 100vh;
+	width: 80px;
+	padding: 10px;
+	background-color: #252525;
+	
+	ul {
+		list-style: none;
+
+		li {
+			width: 60px;
+			height: 60px;
+			border-radius: 8px;
+			background-position: center;
+			background-repeat: no-repeat;
+			background-size: 32px;
+			transition: all .2s ease;
+
+			&:hover {
+				background-color: #0082de;
+			}
+		}
+	}
+
+	.icon-code {
+		background-image: url(../img/code.svg);
+	}
+	.icon-setting {
+		background-image: url(../img/setting.svg);
+	}
+	.icon-search {
+		background-image: url(../img/search.svg);
+	}
+}
+
+.side-menu {
+	position: fixed;
+	top: 0;
+	left: -600px;
+	z-index: 998;
+	width: 600px;
+	height: 100vh;
+	padding-left: 80px;
+	background-color: #0082de;
+	overflow: hidden;
+	transition: all .2s ease;
+	opacity: .5;
+
+	&.active {
+		transform: translateX(100%);
+		opacity: .95;
+	}
+
+	.side-menu-content {
+		
+	}
+}
+
+.label {
+	display: inline-block;
+	line-height: 14px;
+	border-radius: 3px;
+	padding: 2px 4px;
+	text-decoration: none;
+}
+
+.label-link {
+	background-color: #0082de;
+}
+
+.tip-warn {
+	color: #de8233;
+}
+
+.tip-info {
+	color: #569cd6;
+}
+
+.scroll-bar {
+	position: fixed;
+	top: 0;
+	right: 0;
+	z-index: 999;
+	width: 12px;
+	height: 100vh;
+	background-color: #424242;
+	overflow: hidden;
+
+	span {
+		position: absolute;
+		top: 4px;
+		left: 0px;
+		width: 8px;
+		height: 238px;
+		border-radius: 6px;
+		background-color: #0082de;
+
+		&:active {
+			background-color: #de8233;
+		}
+	}
+}
+
+.main-box {
+	box-sizing: border-box;
+	height: 100vh;
+	padding: 0 ~'calc((100% - 1160px)/2)';
+	margin: 0 auto;
+	margin-right: -20px;
+	overflow-x: hidden;
+	overflow-y: auto;
+}
+
+/* 扩展代码块插件 */
+.hljs {
+	position: relative;
+	border-radius: 7px;
+	padding: 8px;
+
+	.codetip {
+		position: absolute;
+		top: 10px;
+		right: 10px;
+		z-index: 1;
+		font-size: 12px;
+		color: #666;
+	}
+
+	&.html::before {
+		content: 'HTML';
+		.codetip;
+	}
+
+	&.css::before {
+		content: 'CSS';
+		.codetip;
+	}
+
+	&.less::before {
+		content: 'LESS';
+		.codetip;
+	}
+
+	&.js::before {
+		content: 'JS';
+		.codetip;
+	}
+}
+
+.hljs * {
+	font-size: 14px;
+	font-family: 'SourceCodePro Regular';
+	white-space: pre-wrap;
+	word-wrap: break-word;
+}
+
+.hljs-comment, .hljs-quote {
+	font-style: normal;
+}

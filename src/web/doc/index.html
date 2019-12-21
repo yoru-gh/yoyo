@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="theme-color" content="#252525">
+    <meta name="author" content="">
+    <link rel="icon" type="image/png" href="" sizes="32x32">
+    <!-- highlight.js 主题用的是 VS2015 并合并到 main.css 内了 -->
+    <link rel="stylesheet" type="text/css" href="css/main.css">
+    <title>文档</title>
+</head>
+<body>
+    <!-- 侧边栏 -->
+    <div class="side-box" id="sideBox">
+        <ul>
+            <li data-value="0" class="icon-code"></li>
+            <li data-value="1" class="icon-setting"></li>
+            <li data-value="2" class="icon-search"></li>
+        </ul>
+    </div>
+    <!-- 隐藏的侧边栏导航栏 -->
+    <div class="side-menu" id="sideMenu"></div>
+    <!-- 主要内容 -->
+    <div class="main-box clearfix" id="mainBox">
+        <h2 class="anchor">模拟滚动条类 ImitateScrollBar 说明</h2>
+        <p>ImitateScrollBar 类基于 <span class="tip-warn">ES6</span> 新增的 <span class="tip-warn">Class</span> 语法糖编写，建议使用新版 <a class="label label-link" target="_bank" href="https://www.google.cn/intl/zh-CN/chrome/">Chrome</a> 浏览器都打开，低版本或者其他浏览器可能会出现意想不到的问题</p>
+        <p>需要用到的 CSS 样式，这里使用了预处理器 LESS</p>
+        <pre class='hljs less'><code>
+            ::-webkit-scrollbar {
+                display: none;
+            }
+
+            body {
+                overflow: hidden;
+            }
+
+            .main-box {
+                box-sizing: border-box;
+                height: 100vh;
+                padding: 0 ~'calc((100% - 1200px)/2)' 20px;
+                margin: 0 auto;
+                margin-right: -10px;
+                overflow-x: hidden;
+                overflow-y: auto;
+            }
+
+            .scroll-bar {
+                position: fixed;
+                top: 0;
+                right: 0;
+                z-index: 999;
+                width: 12px;
+                height: 100vh;
+                background-color: #424242;
+                overflow: hidden;
+            
+                span {
+                    position: absolute;
+                    top: 4px;
+                    left: 0;
+                    width: 8px;
+                    height: 238px;
+                    border-radius: 6px;
+                    background-color: #0082de;
+            
+                    &:active {
+                        background-color: #de8233;
+                    }
+                }
+            }
+        </code></pre>
+        <p>需要用到的 HTML 代码，只允许放在 <span class="tip-info">&lt;body&gt;</span> 标签第一子级</p>
+        <pre class='hljs html'><code>
+            &lt;body&gt;
+                &lt;!-- 需要滚动条的容器 --&gt;
+                &lt;div class="main-box" id="box"&gt;
+                    &lt;!-- 这里可以放任意内容 --&gt;
+                &lt;/div&gt;
+
+                &lt;!-- 滚动条容器 --&gt;
+                &lt;div class="scroll-bar" id="scrollBar"&gt;
+                    &lt;span data-late="0"&gt;&lt;/span&gt;
+                &lt;/div&gt;
+            &lt;/body&gt;
+        </code></pre>
+        <p>需要用到的 Javascript 代码，在页面加载了 imitateScrollBar.js 文件后，模拟滚动条类的使用方法</p>
+        <pre class='hljs js'><code>
+            let iScrollBar = new ImitateScrollBar({
+                el: '#box'
+            })
+        </code></pre>
+        <p>imitateScrollBar.js 中的源代码</p>
+        <pre class='hljs js'><code>
+            class ImitateScrollBar {
+                constructor(options) {
+                    this.scrollBarContent = document.getElementById('scrollBar')
+                    this.scrollBar = this.scrollBarContent.children[0]
+                    this.mainBox = document.getElementById(options.el.split('#')[1])
+                    this.windowHeight = document.body.offsetHeight // 页面高度
+                    this.scrollBarArea = this.windowHeight - this.scrollBar.offsetHeight - 4 // 模拟滚动条的运动范围
+                    this.mainBoxHieght = 0 // 如果有设置内下边距就需要加上边距的值
+                    this.isScrollBarHold = false // 判断是否处于鼠标拖动模拟滚动条状态
+                    this.mouseHoldStartPointY = 0 // 用来记录按住鼠标左键拖动滚动条时鼠标的 Y 坐标
+                    this.lastMouseUpPointY = 0 // 用来记录松开鼠标左键拖时的 Y 坐标，或者说是模拟滚动条最后的距离滚动条容器顶部的停留位置
+            
+                    for(let ele of this.mainBox.children) {
+                        this.mainBoxHieght += ele.offsetHeight
+                    }
+
+                    this.mainBoxScroll = eve => {
+                        if(!this.isScrollBarHold) {
+                            let point = Math.round(eve.target.scrollTop * this.scrollBarArea / (this.mainBoxHieght - this.windowHeight))
+                            this.scrollBar.style.transform = `translateY(${point}px)`
+                            this.lastMouseUpPointY = point
+                            this.scrollBar.dataset.late = this.lastMouseUpPointY
+                        }
+                    }
+                    this.scrollBarMouseDown = eve => {
+                        eve.preventDefault()
+                        this.isScrollBarHold = true
+                    }
+                    this.scrollBarMouseUp = eve => {
+                        eve.preventDefault()
+                        this.isScrollBarHold = false
+                        this.scrollBar.dataset.late = this.lastMouseUpPointY
+                    }
+                    this.bodyMouseDown = eve => {
+                        if(this.isScrollBarHold) {
+                            this.mouseHoldStartPointY = eve.y
+                        }
+                    }
+                    this.bodyMouseUp = eve => {
+                        this.isScrollBarHold = false
+                        this.scrollBar.dataset.late = this.lastMouseUpPointY
+                    }
+                    this.bodyMouseMove = eve => {
+                        if(this.isScrollBarHold) {
+                            let currentPoint = Number(this.scrollBar.dataset.late)
+                            let point = currentPoint + eve.y - this.mouseHoldStartPointY
+                            if(point < 0 || point > this.scrollBarArea - 4) {
+                                return
+                            }
+                            this.scrollBar.style.transform = `translateY(${point}px)`
+                            this.lastMouseUpPointY = point
+                            
+                            let scrollTopValue = Math.round((this.mainBoxHieght - this.windowHeight) * point / this.scrollBarArea)
+                            this.mainBox.scrollTop = scrollTopValue
+                        }
+                    }
+            
+                    this.mainBox.addEventListener('scroll', this.mainBoxScroll)
+                    this.scrollBar.addEventListener('mousedown', this.scrollBarMouseDown)
+                    this.scrollBar.addEventListener('mouseup',  this.scrollBarMouseUp)
+                    document.body.addEventListener('mousedown',  this.bodyMouseDown)
+                    document.body.addEventListener('mouseup',  this.bodyMouseUp)
+                    document.body.addEventListener('mousemove',  this.bodyMouseMove)
+                }
+                destroy() {
+                    this.scrollBar.style.opacity = '0'
+		            this.scrollBar.style.transform = `translateY(0px)`
+                    this.mainBox.removeEventListener('scroll', this.mainBoxScroll)
+                    this.scrollBar.removeEventListener('mousedown', this.scrollBarMouseDown)
+                    this.scrollBar.removeEventListener('mouseup', this.scrollBarMouseUp)
+                    document.body.removeEventListener('mousedown', this.bodyMouseDown)
+                    document.body.removeEventListener('mouseup', this.bodyMouseUp)
+                    document.body.removeEventListener('mousemove', this.bodyMouseMove)
+                }
+            }
+        </code></pre>
+        <div class="copyright">©Copyright</div>
+    </div>
+    <div class="scroll-bar" id="scrollBar">
+        <span data-late="0"></span>
+    </div>
+    <script type="text/javascript" src="js/highlight.js"></script>
+    <script type="text/javascript" src="js/script.js"></script>
+</body>
+</html>
