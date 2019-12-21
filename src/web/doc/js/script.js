@@ -1,7 +1,5 @@
 "use strict";
-// var REG_URL = Symbol(/^([hH][tT]{2}[pP]:\/\/|[hH][tT]{2}[pP][sS]:\/\/)(([A-Za-z0-9-~]+)\.)+([A-Za-z0-9-~\/])/); // 链接
 let REG_URL = Symbol('REG_URL'); // Symbol 说白了只是声明一个唯一的变量名
-	// [REG_URL] = /^([hH][tT]{2}[pP]:\/\/|[hH][tT]{2}[pP][sS]:\/\/)(([A-Za-z0-9-~]+)\.)+([A-Za-z0-9-~\/])/;
 let regObj = {
 	[REG_URL]: '123',
 	test: '123'
@@ -51,26 +49,47 @@ sideBox.addEventListener('click', event => {
 	}
 })
 
+// 计划：
+// 1.提供自动或手动生成滚动条容器
+// 2.提供手动设置页面和滚动条滚动到指定位置
+
 // 模拟滚动条类
 class ImitateScrollBar {
 	constructor(options) {
-		this.scrollBarContent = document.getElementById('scrollBar')
-		this.scrollBar = this.scrollBarContent.children[0]
-		this.mainBox = document.getElementById(options.el.split('#')[1])
+		this.scrollBox = document.getElementById(options.el.split('#')[1])
+		this.scrollBoxParent = this.scrollBox.parentNode
+
+		if(options.createScrollBar) {
+			// 自动生成滚动条时
+			let scrollBarContainer = document.createElement('div')
+			let scrollBar = document.createElement('span')
+			scrollBarContainer.classList.add('scroll-bar')
+			options.scrollBarSkin ? scrollBarContainer.classList.add(options.scrollBarSkin) : null
+			scrollBarContainer.append(scrollBar)
+			this.scrollBoxParent.append(scrollBarContainer)
+			this.scrollBarContainer = scrollBarContainer
+			this.scrollBar = this.scrollBarContainer.children[0]
+		} else {
+			// 手动在页面添加了滚动条容器时
+			this.scrollBarContainer = document.getElementById('scrollBar')
+			this.scrollBar = this.scrollBarContainer.children[0]
+		}
+		
+		
 		this.windowHeight = document.body.offsetHeight // 页面高度
 		this.scrollBarArea = this.windowHeight - this.scrollBar.offsetHeight - 4 // 模拟滚动条的运动范围
-		this.mainBoxHieght = 0 // 如果有设置内下边距就需要加上边距的值
+		this.scrollBoxHieght = 0 // 如果有设置内下边距就需要加上边距的值
 		this.isScrollBarHold = false // 判断是否处于鼠标拖动模拟滚动条状态
 		this.mouseHoldStartPointY = 0 // 用来记录按住鼠标左键拖动滚动条时鼠标的 Y 坐标
 		this.lastMouseUpPointY = 0 // 用来记录松开鼠标左键拖时的 Y 坐标，或者说是模拟滚动条最后的距离滚动条容器顶部的停留位置
 
-		for(let ele of this.mainBox.children) {
-			this.mainBoxHieght += ele.offsetHeight
+		for(let ele of this.scrollBox.children) {
+			this.scrollBoxHieght += ele.offsetHeight
 		}
 
-		this.mainBoxScroll = eve => {
+		this.scrollBoxScroll = eve => {
 			if(!this.isScrollBarHold) {
-				let point = Math.round(eve.target.scrollTop * this.scrollBarArea / (this.mainBoxHieght - this.windowHeight))
+				let point = Math.round(eve.target.scrollTop * this.scrollBarArea / (this.scrollBoxHieght - this.windowHeight))
 				this.scrollBar.style.transform = `translateY(${point}px)`
 				this.lastMouseUpPointY = point
 				this.scrollBar.dataset.late = this.lastMouseUpPointY
@@ -85,16 +104,16 @@ class ImitateScrollBar {
 			this.isScrollBarHold = false
 			this.scrollBar.dataset.late = this.lastMouseUpPointY
 		}
-		this.bodyMouseDown = eve => {
+		this.scrollBoxMouseDown = eve => {
 			if(this.isScrollBarHold) {
 				this.mouseHoldStartPointY = eve.y
 			}
 		}
-		this.bodyMouseUp = eve => {
+		this.scrollBoxMouseUp = eve => {
 			this.isScrollBarHold = false
 			this.scrollBar.dataset.late = this.lastMouseUpPointY
 		}
-		this.bodyMouseMove = eve => {
+		this.scrollBoxMouseMove = eve => {
 			if(this.isScrollBarHold) {
 				let currentPoint = Number(this.scrollBar.dataset.late)
 				let point = currentPoint + eve.y - this.mouseHoldStartPointY
@@ -104,30 +123,40 @@ class ImitateScrollBar {
 				this.scrollBar.style.transform = `translateY(${point}px)`
 				this.lastMouseUpPointY = point
 				
-				let scrollTopValue = Math.round((this.mainBoxHieght - this.windowHeight) * point / this.scrollBarArea)
-				this.mainBox.scrollTop = scrollTopValue
+				let scrollTopValue = Math.round((this.scrollBoxHieght - this.windowHeight) * point / this.scrollBarArea)
+				this.scrollBox.scrollTop = scrollTopValue
 			}
 		}
-
-		this.mainBox.addEventListener('scroll', this.mainBoxScroll)
-		this.scrollBar.addEventListener('mousedown', this.scrollBarMouseDown)
-		this.scrollBar.addEventListener('mouseup',  this.scrollBarMouseUp)
-		document.body.addEventListener('mousedown',  this.bodyMouseDown)
-		document.body.addEventListener('mouseup',  this.bodyMouseUp)
-		document.body.addEventListener('mousemove',  this.bodyMouseMove)
+		this.scrollBox.addEventListener('scroll', this.scrollBoxScroll)
+		if(!options.disableDrag) {
+			this.scrollBar.addEventListener('mousedown', this.scrollBarMouseDown)
+			this.scrollBar.addEventListener('mouseup',  this.scrollBarMouseUp)
+			this.scrollBoxParent.addEventListener('mousedown',  this.scrollBoxMouseDown)
+			this.scrollBoxParent.addEventListener('mouseup',  this.scrollBoxMouseUp)
+			this.scrollBoxParent.addEventListener('mousemove',  this.scrollBoxMouseMove)
+		}
 	}
 	destroy() {
 		this.scrollBar.style.opacity = '0'
 		this.scrollBar.style.transform = `translateY(0px)`
-		this.mainBox.removeEventListener('scroll', this.mainBoxScroll)
-		this.scrollBar.removeEventListener('mousedown', this.scrollBarMouseDown)
-		this.scrollBar.removeEventListener('mouseup', this.scrollBarMouseUp)
-		document.body.removeEventListener('mousedown', this.bodyMouseDown)
-		document.body.removeEventListener('mouseup', this.bodyMouseUp)
-		document.body.removeEventListener('mousemove', this.bodyMouseMove)
+		this.scrollBox.removeEventListener('scroll', this.scrollBoxScroll)
+		if(!options.disableDrag) {
+			this.scrollBar.removeEventListener('mousedown', this.scrollBarMouseDown)
+			this.scrollBar.removeEventListener('mouseup', this.scrollBarMouseUp)
+			this.scrollBoxParent.removeEventListener('mousedown', this.scrollBoxMouseDown)
+			this.scrollBoxParent.removeEventListener('mouseup', this.scrollBoxMouseUp)
+			this.scrollBoxParent.removeEventListener('mousemove', this.scrollBoxMouseMove)
+		}
 	}
 }
 // 初始化实例
 let iScrollBar = new ImitateScrollBar({
 	el: '#mainBox'
+})
+
+let sideScrollBar = new ImitateScrollBar({
+	el: '#sideMenuContent',
+	createScrollBar: true, // 是否程序自动在目标容器内添加滚动条 HTML 代码
+	scrollBarSkin: 'orange', // 设置滚动条颜色
+	disableDrag: true, // 禁用拖拽滚动条
 })
