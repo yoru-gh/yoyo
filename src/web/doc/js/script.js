@@ -4,7 +4,45 @@ let regObj = {
 	[REG_URL]: '123',
 	test: '123'
 }
-// console.log(regObj)
+
+!(function() {
+	let lastTime = 0;
+	let vendors = ['webkit', 'moz'];
+	for(let x = 0; x < vendors.length && !window.requestAnimationFrame; ++x) {
+		window.requestAnimationFrame = window[vendors[x] + 'RequestAnimationFrame'];
+		// name has changed in Webkit
+		window.cancelAnimationFrame = window[vendors[x] + 'CancelAnimationFrame'] || window[vendors[x] + 'CancelRequestAnimationFrame'];
+	}
+
+	// 兼容处理
+	if (!window.requestAnimationFrame) {
+		window.requestAnimationFrame = function(callback, element) {
+			let currTime = new Date().getTime();
+			// 一般显示器刷新率为每秒60次(60Hz) 1000/60≈16.67
+			let timeToCall = Math.max(0, 16.67 - (currTime - lastTime));
+			let id = window.setTimeout(function() {
+				callback(currTime + timeToCall);
+			}, timeToCall);
+			lastTime = currTime + timeToCall;
+			return id;
+		}
+	}
+	if (!window.cancelAnimationFrame) {
+		window.cancelAnimationFrame = function(id) {
+			clearTimeout(id);
+		}
+	}
+}())
+
+// 缓动函数
+var Tween = {
+	linear: function(t, b, c, d) { 
+		return c * t / d + b; 
+	},
+	cubicEaseOut: function(t, b, c, d) {
+		return c * ((t = t/d - 1) * t * t + 1) + b;
+	}
+}
 
 // JS 模拟事件
 !(function(){
@@ -37,21 +75,39 @@ anchorList.forEach(element => {
 let mainBox = document.getElementById('mainBox')
 let sideBox = document.getElementById('sideBox')
 let sideMenu = document.getElementById('sideMenu')
-sideBox.addEventListener('click', event => {
+
+let sideMenuTags = sideMenu.getElementsByTagName('li')
+sideMenu.addEventListener('click', event => {
 	let target = event.target
 	if(target.nodeName.toLowerCase() === 'li') {
 		let value = Number(target.dataset.value)
-		if(value == 0) {
-			sideMenu.classList.add('active')
-		} else {
-			sideMenu.classList.remove('active')
+		if(value == undefined) {
+			return
 		}
+		let activeList = sideMenu.getElementsByClassName('active')
+		if(activeList.length > 0) {
+			sideMenu.getElementsByClassName('active')[0].classList.remove('active')
+		}
+		target.classList.add('active')
+		iScrollBar.scrollTo(anchorPointArray[value] - 10)
 	}
 })
 
-// 计划：
-// 1.提供自动或手动生成滚动条容器
-// 2.提供手动设置页面和滚动条滚动到指定位置
+// 已知总和，项数，末项，求首项公差并返回一个等差数列数组，可以看作是一个匀减速运动每一帧的位移合集
+let getArithmeticProgression = (s, t, an = 0) => {
+	// s 总和，t 运动总时间，an 末项默认值为 0
+	// 16.67 = 1000ms / 60hz，按照一般 60hz 刷新率显示器计算，每一帧的时间约等于 16.67ms
+	const n = Math.ceil(t / 16.67) // 过程中的位移次数，即项数
+	const a1 = 2 * s / n - an // 首项
+	const d = (an - a1) / (n - 1) // 公差
+	
+	let arr = []
+	for(let i = 0; i < n; i++) {
+		arr.push(Math.round(a1 + (d * i)))
+	}
+	// console.log(`首项：${a1}   公差：${d}`)
+	return arr
+}
 
 // 模拟滚动条类
 class ImitateScrollBar {
@@ -64,6 +120,7 @@ class ImitateScrollBar {
 			let scrollBarContainer = document.createElement('div')
 			let scrollBar = document.createElement('span')
 			scrollBarContainer.classList.add('scroll-bar')
+			// 添加自定义的样式
 			options.scrollBarSkin ? scrollBarContainer.classList.add(options.scrollBarSkin) : null
 			scrollBarContainer.append(scrollBar)
 			this.scrollBoxParent.append(scrollBarContainer)
@@ -74,8 +131,7 @@ class ImitateScrollBar {
 			this.scrollBarContainer = document.getElementById('scrollBar')
 			this.scrollBar = this.scrollBarContainer.children[0]
 		}
-		
-		
+
 		this.windowHeight = document.body.offsetHeight // 页面高度
 		this.scrollBarArea = this.windowHeight - this.scrollBar.offsetHeight - 4 // 模拟滚动条的运动范围
 		this.scrollBoxHieght = 0 // 如果有设置内下边距就需要加上边距的值
@@ -85,6 +141,19 @@ class ImitateScrollBar {
 
 		for(let ele of this.scrollBox.children) {
 			this.scrollBoxHieght += ele.offsetHeight
+		}
+
+		// 不需要滚动时不再继续执行之后的代码
+		if(this.scrollBoxHieght <= this.windowHeight) {
+			this.scrollBarContainer.classList.add('disable')
+			return
+		} else {
+			this.scrollBarContainer.classList.remove('disable')
+		}
+
+		// 设置滚动条的停靠位置
+		if(options.float == 'left') {
+			this.scrollBarContainer.classList.add('float-left')
 		}
 
 		this.scrollBoxScroll = eve => {
@@ -135,6 +204,35 @@ class ImitateScrollBar {
 			this.scrollBoxParent.addEventListener('mouseup',  this.scrollBoxMouseUp)
 			this.scrollBoxParent.addEventListener('mousemove',  this.scrollBoxMouseMove)
 		}
+
+		// 滚动到指定位置
+		this.scrollTo = (point, time = 300) => {
+			// 目标点距离当前位置超过 10px 时才执行
+			if (Math.abs(this.scrollBox.scrollTop - point) > 10) {
+				const SV = point - this.scrollBox.scrollTop // 位移量
+				const AT = Math.ceil(time/16.67) // time 时间内把总位移分割成 AT 份，
+				let index = 0
+				let apArr = getArithmeticProgression(SV, time)
+				let go = () => {
+					// 现在设定从某个位置滚动到指定位置的固定位移为 S 单位 px
+					// 位移 S 所需要的时间固定为 T 单位 ms
+					// 已知每执行一次 requestAnimationFrame 所用的时间为 16.67ms，用 t 表示
+					// 也就是现在需要把 S 划分成 T/t 段，S/(T/t) 值的合集，如果是匀减速运动就是一个等差数列
+					this.scrollBox.scrollTop += apArr[index]
+					index ++
+					if (index < AT) {
+						window.requestAnimationFrame(go);
+					} else {
+						window.cancelAnimationFrame(go);
+					}
+				};
+				go();
+			}
+		}
+
+		this.init = (ops = options) => {
+			return new ImitateScrollBar(ops)
+		}
 	}
 	destroy() {
 		this.scrollBar.style.opacity = '0'
@@ -149,6 +247,7 @@ class ImitateScrollBar {
 		}
 	}
 }
+
 // 初始化实例
 let iScrollBar = new ImitateScrollBar({
 	el: '#mainBox'
@@ -156,7 +255,27 @@ let iScrollBar = new ImitateScrollBar({
 
 let sideScrollBar = new ImitateScrollBar({
 	el: '#sideMenuContent',
-	createScrollBar: true, // 是否程序自动在目标容器内添加滚动条 HTML 代码
+	createScrollBar: true, // 自动添加滚动条 HTML 代码，会添加到 el 的父节点上
 	scrollBarSkin: 'orange', // 设置滚动条颜色
 	disableDrag: true, // 禁用拖拽滚动条
+	float: 'left', // 设置滚动条在左/右
 })
+
+let testBtn = document.getElementById('button')
+testBtn.addEventListener('click', event => {
+	let _this = event.target
+	let value = Number(_this.dataset.value)
+	if(value == 0) {
+		_this.dataset.value = 1
+		sideMenu.classList.add('active')
+	} else {
+		_this.dataset.value = 0
+		sideMenu.classList.remove('active')
+	}
+})
+
+let vh = document.body.offsetHeight
+let xiebian = Math.ceil(Math.sqrt(Math.pow(80, 2) + Math.pow(vh, 2)))
+let jiajiao = Number((Math.atan2(80, vh)*180/Math.PI).toFixed(2))
+let sideMenuHypotenuse = sideMenu.getElementsByClassName('hypotenuse')[0]
+sideMenuHypotenuse.style.cssText += `height: ${xiebian}px; transform: rotate(${jiajiao}deg)`
