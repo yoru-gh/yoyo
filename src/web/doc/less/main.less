@@ -1,8 +1,8 @@
 @import 'theme'; // 导入 highlight.js 的主题
 
 @font-face {
+	src: url(../font/SourceCodePro-Regular.ttf);
 	font-family: 'SourceCodePro Regular';
-	src: url('../font/SourceCodePro-Regular.ttf');
 }
 
 ::-webkit-scrollbar {
@@ -112,12 +112,12 @@ p {
 	width: 500px;
 	height: 100vh;
 	overflow: hidden;
-	transition: all .3s ease;
-	opacity: .5;
+	transition: all .3s ease .15s;
+	opacity: .2;
 
 	&.active {
 		transform: translateX(100%);
-		opacity: 0.95;
+		opacity: .95;
 	}
 
 	.hypotenuse {
@@ -126,10 +126,10 @@ p {
 		right: 0;
 		z-index: -1;
 		width: 80px;
-		// height: ceil(sqrt(pow(80px, 2) + pow(100vh, 2)));
 		background-color: #0082de;
 		transform-origin: top right;
-		// transform: rotate(34deg);
+		// height: ceil(sqrt(pow(80px, 2) + pow(100vh, 2)));
+		// transform: rotate(4.7deg);
 	}
 
 	.side-menu-content {
@@ -163,9 +163,35 @@ p {
 					&.active {
 						background-color: #de8233;
 					}
+
+					&.heightli {
+						height: 1000px;
+						background-color: #569cd6;
+					}
 				}
 			}
 		}
+	}
+}
+.side-menu-bg {
+	left: -500px;
+	width: 580px;
+	z-index: 997;
+	transition: all .3s ease .2s;
+
+	&.active {
+		transition: all .4s ease;
+		transform: translateX(100%);
+		opacity: 0.8;
+	}
+
+	.hypotenuse {
+		background-color: #252525;
+	}
+
+	.side-menu-content {
+		width: 500px;
+		background-color: #252525;
 	}
 }
 

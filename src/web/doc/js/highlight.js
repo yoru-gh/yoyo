@@ -4,14 +4,14 @@
 // 扩展添加行号
 (function(window, document){
 	String.prototype.styleFormat = function () {
-		var args = arguments;
+		let args = arguments;
 		return this.replace(/\{(\d+)\}/g, function(m, i){
 			return args[i];
 		});
 	};
 	//创建行号样式，使用伪类遮挡 list-style 数字后面的一点
 	function createLineNumbersStyle(){
-		var lineNumbersStyle = [
+		let lineNumbersStyle = [
 			'.{0} ol {',
 				'list-style: decimal;',
 				'margin: 0px 0px 0 40px;',
@@ -31,7 +31,7 @@
 				'background-color: ' + getComputedStyle(document.getElementsByClassName('hljs')[0])['backgroundColor'],
 			'}',
 		];
-		var istyle = document.createElement('style');
+		let istyle = document.createElement('style');
 		istyle.type = 'text/css';
 		istyle.innerHTML = lineNumbersStyle.join('').styleFormat('hljs');
 		document.getElementsByTagName('head')[0].appendChild(istyle);
