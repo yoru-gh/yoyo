@@ -239,14 +239,6 @@ p {
 		}
 	}
 
-	&.orange {
-		background-color: transparent;
-
-		span {
-			background-color: #de8233;
-		}
-	}
-
 	&.float-left {
 		left: 0;
 		right: auto;
@@ -254,6 +246,14 @@ p {
 
 	&.disable {
 		display: none;
+	}
+	// 自定义的主题
+	&.orange {
+		background-color: transparent;
+
+		span {
+			background-color: #de8233;
+		}
 	}
 }
 
@@ -312,4 +312,45 @@ p {
 
 .hljs-comment, .hljs-quote {
 	font-style: normal;
+}
+
+// 菜单
+.menu-icon {
+	width: 32px;
+	height: 32px;
+	padding: 14px;
+	transition: all .3s ease;
+
+	svg {
+		width: 32px;
+		height: 32px;
+		fill: #dcdcdc;
+
+		g {
+			transform-origin: center;
+			transition: all .3s ease;
+		}
+	}
+
+	&.active {
+		transform: rotate(180deg)
+	}
+
+	&.active svg g:nth-of-type(1) {
+		opacity: 0;
+		transform: scaleX(0);
+	}
+
+	&.active svg g:nth-of-type(2) {
+		transform: scale(1.1) rotate(-45deg);
+	}
+
+	&.active svg g:nth-of-type(3) {
+		transform: scale(1.1) rotate(45deg);
+	}
+
+	&.active svg g:nth-of-type(4) {
+		opacity: 0;
+		transform:  scaleX(0);
+	}
 }
