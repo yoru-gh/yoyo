@@ -3,54 +3,62 @@
 
 // 扩展添加行号
 (function(window, document){
-	String.prototype.styleFormat = function () {
-		let args = arguments;
-		return this.replace(/\{(\d+)\}/g, function(m, i){
-			return args[i];
-		});
-	};
-	//创建行号样式，使用伪类遮挡 list-style 数字后面的一点
-	function createLineNumbersStyle(){
-		let lineNumbersStyle = [
-			'.{0} ol {',
-				'list-style: decimal;',
-				'margin: 0px 0px 0 40px;',
-				'padding: 0px;',
-			'}',
-			'.{0} ol li {',
-				'position: relative;',
-				'padding: 2px;',
-			'}',
-			'.{0} ol li::before {', // 设置伪类样式目的时为了遮挡有序列表自带的数字后面的一点
-				'content: "";',
-				'position: absolute;',
-				'top: 12px;',
-				'left: -18px;',
-				'width: 8px;',
-				'height: 8px;',
-				'background-color: ' + getComputedStyle(document.getElementsByClassName('hljs')[0])['backgroundColor'],
-			'}',
-		];
-		let istyle = document.createElement('style');
-		istyle.type = 'text/css';
-		istyle.innerHTML = lineNumbersStyle.join('').styleFormat('hljs');
-		document.getElementsByTagName('head')[0].appendChild(istyle);
-	}
-	//初始化代码行号
-	function setLineNumber(){
-		createLineNumbersStyle();
-		let code = document.querySelectorAll('code');
-		code.forEach(function(item){
-			// 根据页面布局，code 标签内是缩进了 12 个空格的代码，输出时要去除不必要的空格
-			let codeStr = item.innerHTML.substring(1,item.innerHTML.length-9); // \n 换行符算两个字符, 删除 code 标签内自动生成的首尾两个换行符，-9 原因是</code>前有8个空格和一个换行符
-				codeStr = '<ol><li>' + codeStr.replace(/\n/g, '\n</li><li>') + '\n</li></ol>'; // 插入用于显示行号的 ol
-				codeStr = codeStr.replace(/<li> {12}/g, '<li>'); // 将页面缩进的前 12 个空格去掉
-			item.innerHTML = codeStr;
-		})
-	}
-	if(window.hljs){
-		window.hljs.setLineNumber = setLineNumber;
-	} else {
-		window.console.log('%cError: 似乎没有引入 highlight.js 文件', 'color:#f22;font-size:12px;');
-	}
-})(window, document);
+    String.prototype.styleFormat = function () {
+        let args = arguments;
+        return this.replace(/\{(\d+)\}/g, function(m, i){
+            return args[i];
+        });
+    };
+    //创建行号样式，使用伪类遮挡 list-style 数字后面的一点
+    function createLineNumbersStyle(){
+        if(document.getElementById('hljsStyle')) {
+            let lineNumbersStyle = [
+                '.{0} ol {',
+                    'list-style: decimal;',
+                    'margin: 0px 0px 0 40px;',
+                    'padding: 0px;',
+                '}',
+                '.{0} ol li {',
+                    'position: relative;',
+                    'padding: 2px;',
+                '}',
+                '.{0} ol li::before {', // 设置伪类样式目的时为了遮挡有序列表自带的数字后面的一点
+                    'content: "";',
+                    'position: absolute;',
+                    'top: 12px;',
+                    'left: -18px;',
+                    'width: 8px;',
+                    'height: 8px;',
+                    'background-color: ' + getComputedStyle(document.getElementsByClassName('hljs')[0])['backgroundColor'],
+                '}',
+            ];
+            let istyle = document.createElement('style');
+            istyle.setAttribute('id', 'hljsStyle');
+            istyle.type = 'text/css';
+            istyle.innerHTML = lineNumbersStyle.join('').styleFormat('hljs');
+            document.getElementsByTagName('head')[0].appendChild(istyle);
+        }
+    }
+    //初始化代码行号
+    function setLineNumber(){
+        createLineNumbersStyle();
+        let code = document.querySelectorAll('code');
+        code.forEach(function(item){
+            // 根据页面布局，code 标签内是缩进了 12 个空格的代码，输出时要去除不必要的空格
+            let codeStr = item.innerHTML.substring(1,item.innerHTML.length-9); // \n 换行符算两个字符, 删除 code 标签内自动生成的首尾两个换行符，-9 原因是</code>前有8个空格和一个换行符
+                codeStr = '<ol><li>' + codeStr.replace(/\n/g, '\n</li><li>') + '\n</li></ol>'; // 插入用于显示行号的 ol
+                codeStr = codeStr.replace(/<li> {12}/g, '<li>'); // 将页面缩进的前 12 个空格去掉
+            item.innerHTML = codeStr;
+        })
+    }
+    if(window.hljs){
+        window.hljs.setLineNumber = setLineNumber;
+    } else {
+        window.console.log('%cError: 似乎没有引入 highlight.js 文件', 'color:#f22;font-size:12px;');
+    }
+})(window, document)
+
+// exports default {
+//     initHighlightingOnLoad,
+//     setLineNumber
+// }

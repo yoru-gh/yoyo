@@ -354,3 +354,72 @@ p {
 		transform:  scaleX(0);
 	}
 }
+
+.loading {
+    animation: rotate 2s linear infinite;
+	transform-origin: center center;
+	
+    > circle {
+        display: inline-block;
+        animation: dash 1500ms ease-in-out infinite;
+        stroke-linecap: round; // 端点是圆形
+        color: #fff;
+    }
+
+    @keyframes rotate {
+        100% {
+            transform: rotate(360deg);
+        }
+    }
+     
+    @keyframes dash {
+        0% {
+            stroke-dasharray: 1, 200;
+        }
+
+        50% {
+            stroke-dasharray: 100, 200;
+            stroke-dashoffset: -45;
+        }
+
+        100% {
+            stroke-dasharray: 100, 200;
+            stroke-dashoffset: -124;
+        }
+    }
+}
+
+.loading-box {
+	position: fixed;
+	top: -40px;
+	right: 20px;
+	z-index: 1000;
+	width: 40px;
+	height: 40px;
+	transition: all .2s ease;
+	opacity: .3;
+
+	&.active {
+		transform: translateY(60px);
+		opacity: 1;
+	}
+
+	svg {
+		width: 40px;
+		height: 40px;
+
+		// circle {
+		// 	color: #0082de;;
+		// }
+	}
+}
+
+button {
+	padding: 5px;
+
+	svg {
+		width: 40px;
+		height: 40px;
+		fill: #fff;
+	}
+}

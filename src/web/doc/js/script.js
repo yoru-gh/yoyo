@@ -110,17 +110,16 @@ let sideScrollBar = new ImitateScrollBar({
 })
 
 let button = document.getElementById('button')
+let loadingBox = document.getElementById('loadingBox')
 button.addEventListener('click', event => {
 	let _this = event.target
 	let value = Number(_this.dataset.value)
 	if(value == 0) {
 		_this.dataset.value = 1
-		sideMenu.classList.add('active')
-		sideMenuBg.classList.add('active')
+		loadingBox.classList.add('active')
 	} else {
 		_this.dataset.value = 0
-		sideMenu.classList.remove('active')
-		sideMenuBg.classList.remove('active')
+		loadingBox.classList.remove('active')
 	}
 })
 

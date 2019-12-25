@@ -99,7 +99,8 @@ class ImitateScrollBar {
 		}
 
 		// 滚动到指定位置
-		this.scrollTo = (point, time = 300) => {
+		this.scrollTo = (point = 0, time = 300) => {
+			// 一个参数都没有时返回顶部
 			// 目标点距离当前位置超过 10px 时才执行
 			if (Math.abs(this.scrollBox.scrollTop - point) > 10) {
 				const SV = point - this.scrollBox.scrollTop // 位移量
@@ -166,17 +167,17 @@ class ImitateScrollBar {
     }
     // 已知总和，项数，末项，求首项和公差并返回一个等差数列数组，可以看作是一个匀减速运动每一帧的位移合集
     getArithmeticProgression(s, t, an = 0) {
-    	// s 总和，t 运动总时间，an 末项默认值为 0
-    	// 16.67 = 1000ms / 60hz，按照一般 60hz 刷新率显示器计算，每一帧的时间约等于 16.67ms
-    	const n = Math.ceil(t / 16.67) // 过程中的位移次数，即项数
-    	const a1 = 2 * s / n - an // 首项
-    	const d = (an - a1) / (n - 1) // 公差
-    	
-    	let arr = []
-    	for(let i = 0; i < n; i++) {
-    		arr.push(Math.round(a1 + (d * i)))
-    	}
-    	return arr
+        // s 总和，t 运动总时间，an 末项默认值为 0
+        // 16.67 = 1000ms / 60hz，按照一般 60hz 刷新率显示器计算，每一帧的时间约等于 16.67ms
+        const n = Math.ceil(t / 16.67) // 过程中的位移次数，即项数
+        const a1 = 2 * s / n - an // 首项
+        const d = (an - a1) / (n - 1) // 公差
+        
+        let arr = []
+        for(let i = 0; i < n; i++) {
+            arr.push(Math.round(a1 + (d * i)))
+        }
+        return arr
     }
 }
 // export default ImitateScrollBar

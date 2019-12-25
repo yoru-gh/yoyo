@@ -7,7 +7,7 @@
 			<span class="text">主页 HOMEPAGE <i>ホームページ</i></span>
 		</div>
 		<div class="content">
-			<!-- <router-link to="/">H</router-link> -->
+			<!-- <router-link to="/doc">D</router-link> -->
 			<router-link to="/haro">H</router-link>
 			<router-link to="/">Y</router-link>
 			<router-link class="pro" to="/">项目</router-link>

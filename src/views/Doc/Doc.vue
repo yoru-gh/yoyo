@@ -1,17 +1,5 @@
-<!DOCTYPE html>
-<html lang="zh-cmn-Hans">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <meta name="theme-color" content="#252525">
-    <meta name="author" content="">
-    <link rel="icon" type="image/png" href="" sizes="32x32">
-    <!-- highlight.js 主题用的是 VS2015 并合并到 main.css 内了 -->
-    <link rel="stylesheet" type="text/css" href="css/main.css">
-    <title>文档</title>
-</head>
-<body>
+<template>
+    <div class="doc-view">
     <!-- 侧边栏 -->
     <div class="side-box" id="sideBox">
         <div class="menu-icon" data-value="0" id="menuIcon">
@@ -46,9 +34,15 @@
             </svg>
         </div>
         <ul>
-            <li data-value="0" class="icon-setting"></li>
-            <li data-value="1" class="icon-code"></li>
-            <li data-value="2" class="icon-search"></li>
+            <li>
+                <icon-sprite icon-name="setting"/>
+            </li>
+            <li>
+                <icon-sprite icon-name="code"/>
+            </li>
+            <li>
+                <icon-sprite icon-name="logo"/>
+            </li>
         </ul>
         <button class="button" id="button" data-value="0">
             <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 40 40" enable-background="new 0 0 40 40" xml:space="preserve">
@@ -265,7 +259,7 @@
                         if(this.isScrollBarHold) {
                             let currentPoint = Number(this.scrollBar.dataset.late)
                             let point = currentPoint + eve.y - this.mouseHoldStartPointY
-                            if(point < 0 || point > this.scrollBarArea - 4) {
+                            if(0 > point || point > this.scrollBarArea - 4) {
                                 return
                             }
                             this.scrollBar.style.transform = `translateY(${point}px)`
@@ -300,7 +294,7 @@
                                 // 也就是现在需要把 S 划分成 T/t 段，S/(T/t) 值的合集，如果是匀减速运动就是一个等差数列
                                 this.scrollBox.scrollTop += apArr[index]
                                 index ++
-                                if (index < AT) {
+                                if (AT > index) {
                                     window.requestAnimationFrame(go);
                                 } else {
                                     window.cancelAnimationFrame(go);
@@ -328,7 +322,7 @@
                     }
             
                     // 不需要滚动时隐藏滚动条
-                    if(this.scrollBoxHieght <= this.windowHeight) {
+                    if(this.windowHeight > this.scrollBoxHieght) {
                         this.scrollBarContainer.classList.add('disable')
                         return
                     } else {
@@ -353,17 +347,17 @@
                 }
                 // 已知总和，项数，末项，求首项和公差并返回一个等差数列数组，可以看作是一个匀减速运动每一帧的位移合集
                 getArithmeticProgression(s, t, an = 0) {
-                	// s 总和，t 运动总时间，an 末项默认值为 0
-                	// 16.67 = 1000ms / 60hz，按照一般 60hz 刷新率显示器计算，每一帧的时间约等于 16.67ms
-                	const n = Math.ceil(t / 16.67) // 过程中的位移次数，即项数
-                	const a1 = 2 * s / n - an // 首项
-                	const d = (an - a1) / (n - 1) // 公差
-                	
-                	let arr = []
-                	for(let i = 0; i < n; i++) {
-                		arr.push(Math.round(a1 + (d * i)))
-                	}
-                	return arr
+                    // s 总和，t 运动总时间，an 末项默认值为 0
+                    // 16.67 = 1000ms / 60hz，按照一般 60hz 刷新率显示器计算，每一帧的时间约等于 16.67ms
+                    const n = Math.ceil(t / 16.67) // 过程中的位移次数，即项数
+                    const a1 = 2 * s / n - an // 首项
+                    const d = (an - a1) / (n - 1) // 公差
+                    
+                    let arr = []
+                    for(let i = 0; n > i; i++) {
+                        arr.push(Math.round(a1 + (d * i)))
+                    }
+                    return arr
                 }
             }
         </code></pre>
@@ -373,7 +367,7 @@
             !(function() {
                 let lastTime = 0;
                 let vendors = ['webkit', 'moz'];
-                for(let x = 0; x < vendors.length && !window.requestAnimationFrame; ++x) {
+                for(let x = 0; vendors.length > x && !window.requestAnimationFrame; ++x) {
                     window.requestAnimationFrame = window[vendors[x] + 'RequestAnimationFrame'];
                     // name has changed in Webkit
                     window.cancelAnimationFrame = window[vendors[x] + 'CancelAnimationFrame'] || window[vendors[x] + 'CancelRequestAnimationFrame'];
@@ -399,7 +393,7 @@
                 }
             }())
         </code></pre>
-        <div class="copyright">©Copyright</div>
+        <div class="icopyright">©Copyright</div>
     </div>
     <div class="scroll-bar">
         <span data-late="0"></span>
@@ -409,8 +403,454 @@
             <circle cx="25" cy="25" r="20" fill="none" stroke="currentColor" stroke-width="5"></circle>
         </svg>
     </div>
-    <script type="text/javascript" src="js/highlight.js"></script>
-    <script type="text/javascript" src="js/module/ImitateScrollBar.js"></script>
-    <script type="text/javascript" src="js/script.js"></script>
-</body>
-</html>
+    </div>
+</template>
+
+<style lang="less" scoped>
+@import '../../assets/less/highlight-theme.less'; // 导入 highlight.js 的主题
+@font-face {
+	src: url(../../assets/font/SourceCodePro-Regular.ttf);
+	font-family: 'SourceCodePro Regular';
+}
+
+::-webkit-scrollbar {
+	display: none;
+}
+
+* {
+    font-size: 14px;
+	color: #dcdcdc;
+}
+
+h2 {
+    font-size: 24px;
+}
+
+p {
+    font-size: 16px;
+}
+
+.doc-view {
+    width: 100vw;
+    height: 100vh;
+	background-color: #424242;
+	overflow: hidden;
+}
+
+h2 {
+	line-height: 78px;
+	padding-top: 24px;
+}
+
+p {
+	line-height: 24px;
+	padding: 12px 0;
+}
+
+.icopyright {
+	height: 86px;
+	line-height: 86px;
+	font-size: 12px;
+	color: #888;
+	text-align: center;
+}
+
+.clearfix::after {
+	content: '';
+	display: block;
+	clear: both;
+	height: 0;
+	visibility: hidden;
+}
+
+.side-box {
+	box-sizing: border-box;
+	position: fixed;
+	top: 0;
+	left: 0;
+	z-index: 999;
+	height: 100vh;
+	width: 80px;
+	padding: 10px;
+	background-color: #252525;
+	
+	ul {
+		list-style: none;
+
+		li {
+            box-sizing: border-box;
+			width: 60px;
+            height: 60px;
+            padding: 14px;
+			border-radius: 8px;
+			background-position: center;
+			background-repeat: no-repeat;
+			background-size: 32px;
+            transition: all .2s ease;
+            overflow: hidden;
+
+			&:hover {
+				background-color: #0082de;
+            }
+            
+            svg {
+                fill: #fff;
+            }
+		}
+	}
+}
+
+.button {
+	width: 50px;
+	height: 50px;
+	font-size: 16px;
+	color: #fff;
+	border-radius: 8px;
+	margin: 15px 5px 5px;
+	outline: none;
+	transition: all .2s ease;
+	background-color: #0082de;
+
+	&:hover {
+		background-color: #de8233;
+	}
+}
+
+.side-menu {
+	position: fixed;
+	top: 0;
+	left: -420px;
+	z-index: 998;
+	width: 500px;
+	height: 100vh;
+	overflow: hidden;
+	transition: all .3s ease .15s;
+	opacity: .2;
+
+	&.active {
+		transform: translateX(100%);
+		opacity: .95;
+	}
+
+	.hypotenuse {
+		position: absolute;
+		top: 0;
+		right: 0;
+		z-index: -1;
+		width: 80px;
+		background-color: #0082de;
+		transform-origin: top right;
+		// height: ceil(sqrt(pow(80px, 2) + pow(100vh, 2)));
+		// transform: rotate(4.7deg);
+	}
+
+	.side-menu-content {
+		box-sizing: border-box;
+		width: 420px;
+		height: 100vh;
+		padding: 8px 8px 8px 20px;
+		background-color: #0082de;
+		overflow-x: hidden;
+		overflow-y: auto;
+
+		.side-menu-content-wrap {
+			width: auto;
+
+			ul {
+				list-style: none;
+				padding: 10px 8px;
+
+				li {
+					height: 34px;
+					padding-left: 12px;
+					margin: 4px 0 14px 0;
+					color: #fff;
+					line-height: 34px;
+					font-size: 15px;
+					border-radius: 8px;
+					cursor: pointer;
+					// background-color: #0082de;
+					transition: all .2s ease;
+
+					&.active {
+						background-color: #de8233;
+					}
+
+					&.heightli {
+						height: 1000px;
+						background-color: #569cd6;
+					}
+				}
+			}
+		}
+	}
+}
+.side-menu-bg {
+	left: -500px;
+	width: 580px;
+	z-index: 997;
+	transition: all .3s ease .2s;
+
+	&.active {
+		transition: all .4s ease;
+		transform: translateX(100%);
+		opacity: 0.8;
+	}
+
+	.hypotenuse {
+		background-color: #252525;
+	}
+
+	.side-menu-content {
+		width: 500px;
+		background-color: #252525;
+	}
+}
+
+.label {
+	display: inline-block;
+	line-height: 14px;
+	border-radius: 3px;
+	padding: 2px 4px;
+	text-decoration: none;
+}
+
+.label-link {
+	background-color: #0082de;
+}
+
+.tip-warn {
+	color: #de8233;
+}
+
+.tip-info {
+	color: #569cd6;
+}
+
+.scroll-bar {
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	z-index: 999;
+	width: 16px;
+	background-color: #424242;
+	overflow: hidden;
+
+	span {
+		position: absolute;
+		top: 4px;
+		left: 4px;
+		width: 8px;
+		height: 238px;
+		border-radius: 6px;
+		background-color: #0082de;
+
+		&:active {
+			background-color: #de8233;
+		}
+	}
+
+	&.float-left {
+		left: 0;
+		right: auto;
+	}
+
+	&.disable {
+		display: none;
+	}
+	// 自定义的主题
+	&.orange {
+		background-color: transparent;
+
+		span {
+			background-color: #de8233;
+		}
+	}
+}
+
+.main-box {
+	box-sizing: border-box;
+	height: 100vh;
+	padding: 0 ~'calc((100% - 1160px)/2)';
+	margin: 0 auto;
+	margin-right: -20px;
+	overflow-x: hidden;
+	overflow-y: auto;
+}
+
+/* 扩展代码块插件 */
+.hljs {
+	position: relative;
+	border-radius: 7px;
+	padding: 8px;
+
+	.codetip {
+		position: absolute;
+		top: 10px;
+		right: 10px;
+		z-index: 1;
+		font-size: 12px;
+		color: #666;
+	}
+
+	&.html::before {
+		content: 'HTML';
+		.codetip;
+	}
+
+	&.css::before {
+		content: 'CSS';
+		.codetip;
+	}
+
+	&.less::before {
+		content: 'LESS';
+		.codetip;
+	}
+
+	&.js::before {
+		content: 'JS';
+		.codetip;
+	}
+}
+
+.hljs * {
+	font-size: 14px;
+	font-family: 'SourceCodePro Regular';
+	white-space: pre-wrap;
+	word-wrap: break-word;
+}
+
+.hljs-comment, .hljs-quote {
+	font-style: normal;
+}
+
+// 菜单
+.menu-icon {
+	width: 32px;
+	height: 32px;
+	padding: 14px;
+	transition: all .3s ease;
+
+	svg {
+		width: 32px;
+		height: 32px;
+		fill: #dcdcdc;
+
+		g {
+			transform-origin: center;
+			transition: all .3s ease;
+		}
+	}
+
+	&.active {
+		transform: rotate(180deg)
+	}
+
+	&.active svg g:nth-of-type(1) {
+		opacity: 0;
+		transform: scaleX(0);
+	}
+
+	&.active svg g:nth-of-type(2) {
+		transform: scale(1.1) rotate(-45deg);
+	}
+
+	&.active svg g:nth-of-type(3) {
+		transform: scale(1.1) rotate(45deg);
+	}
+
+	&.active svg g:nth-of-type(4) {
+		opacity: 0;
+		transform:  scaleX(0);
+	}
+}
+
+.loading {
+    animation: rotate 2s linear infinite;
+	transform-origin: center center;
+	
+    > circle {
+        display: inline-block;
+        animation: dash 1500ms ease-in-out infinite;
+        stroke-linecap: round; // 端点是圆形
+        color: #fff;
+    }
+
+    @keyframes rotate {
+        100% {
+            transform: rotate(360deg);
+        }
+    }
+     
+    @keyframes dash {
+        0% {
+            stroke-dasharray: 1, 200;
+        }
+
+        50% {
+            stroke-dasharray: 100, 200;
+            stroke-dashoffset: -45;
+        }
+
+        100% {
+            stroke-dasharray: 100, 200;
+            stroke-dashoffset: -124;
+        }
+    }
+}
+
+.loading-box {
+	position: fixed;
+	top: -40px;
+	right: 20px;
+	z-index: 1000;
+	width: 40px;
+	height: 40px;
+	transition: all .2s ease;
+	opacity: .3;
+
+	&.active {
+		transform: translateY(60px);
+		opacity: 1;
+	}
+
+	svg {
+		width: 40px;
+		height: 40px;
+
+		// circle {
+		// 	color: #0082de;;
+		// }
+	}
+}
+
+button {
+	padding: 5px;
+
+	svg {
+		width: 40px;
+		height: 40px;
+		fill: #fff;
+	}
+}
+</style>
+
+<script>
+import hljs from '@/assets/script/highlight.js'
+import IconSprite from '@/components/SvgSprite.vue'
+export default {
+	name: 'Doc',
+	data () {
+		return {}
+    },
+    mounted() {
+        hljs.initHighlightingOnLoad();
+        // hljs.setLineNumber(); // 添加行号
+    },
+    components: {
+		IconSprite
+	}
+}
+</script>
