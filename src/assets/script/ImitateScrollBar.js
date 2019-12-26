@@ -1,5 +1,4 @@
 "use strict";
-// 计划：
 // 模拟滚动条类
 class ImitateScrollBar {
 	constructor(options) {
@@ -46,7 +45,7 @@ class ImitateScrollBar {
 			this.scrollBarContainer.classList.add('float-left')
 		}
 
-		this.scrollBoxScroll = eve => {
+		this.scrollBoxScroll = () => {
 			if(!this.isScrollBarHold) {
 				let point = this.getScrollPoint()
 				if(point > this.scrollBarArea) {
@@ -71,7 +70,7 @@ class ImitateScrollBar {
 				this.mouseHoldStartPointY = eve.y
 			}
 		}
-		this.scrollBoxMouseUp = eve => {
+		this.scrollBoxMouseUp = () => {
 			this.isScrollBarHold = false
 			this.scrollBar.dataset.late = this.lastMouseUpPointY
 		}
@@ -180,4 +179,4 @@ class ImitateScrollBar {
         return arr
     }
 }
-// export default ImitateScrollBar
+export default ImitateScrollBar

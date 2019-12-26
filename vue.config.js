@@ -22,5 +22,9 @@ module.exports = {
 			symbolId: '[name]'
 		})
 	},
-	configureWebpack: () => ({})
+	configureWebpack: () => ({}),
+	// devServer: {
+	// 	// 指定端口号
+	// 	port: 8888
+	// }
 }

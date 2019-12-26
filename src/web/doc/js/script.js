@@ -1,11 +1,5 @@
 "use strict";
 // import ImitateScrollBar from './module/ImitateScrollBar.js'
-let REG_URL = Symbol('REG_URL'); // Symbol 说白了只是声明一个唯一的变量名
-let regObj = {
-	[REG_URL]: '123',
-	test: '123'
-}
-
 !(function() {
 	let lastTime = 0;
 	let vendors = ['webkit', 'moz'];
