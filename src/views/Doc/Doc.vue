@@ -407,7 +407,7 @@
 </template>
 
 <style lang="less" scoped>
-    @import '../../assets/less/highlight-theme.less'; // 导入 highlight.js 的主题
+    @import '../../assets/less/highlight.theme.less'; // 导入 highlight.js 的主题
     @font-face {
         src: url(../../assets/font/SourceCodePro-Regular.ttf);
         font-family: 'SourceCodePro Regular';
@@ -597,7 +597,7 @@
         left: -500px;
         width: 580px;
         z-index: 997;
-        transition: all .3s ease .2s;
+        transition: all .6s ease;
 
         &.active {
             transition: all .4s ease;
@@ -688,7 +688,7 @@
     }
 
     /* 扩展代码块插件 */
-    /deep/.hljs {
+    /deep/ .hljs {
         font-family: 'SourceCodePro Regular';
         position: relative;
         border-radius: 7px;
@@ -725,6 +725,9 @@
                 }
             }
         }
+    }
+    pre {
+        position: relative;
 
         .codetip {
             position: absolute;
@@ -877,61 +880,8 @@
         })
     })
     import IconSprite from '@/components/SvgSprite.vue'
-    import ImitateScrollBar from '@/assets/script/ImitateScrollBar'
-
-    // highlight.js 扩展添加行号
-    class HljsSetLineNumber {
-        constructor(options = 'hljs') {
-            this.styleFormat = () => {
-                let args = arguments;
-                return this.replace(/\{(\d+)\}/g, function(m, i){
-                    return args[i];
-                })
-            }
-            //创建行号样式，使用伪类遮挡 list-style 数字后面的一点
-            this.createLineNumbersStyle = () => {
-                if(!document.getElementById('hljsStyle')) {
-                    let lineNumbersStyle = [
-                        '.{0} ol {',
-                            'list-style: decimal;',
-                            'margin: 0px 0px 0 40px;',
-                            'padding: 0px;',
-                        '}',
-                        '.{0} ol li {',
-                            'position: relative;',
-                            'padding: 2px;',
-                        '}',
-                        '.{0} ol li::before {', // 设置伪类样式目的时为了遮挡有序列表自带的数字后面的一点
-                            'content: "";',
-                            'position: absolute;',
-                            'top: 12px;',
-                            'left: -18px;',
-                            'width: 8px;',
-                            'height: 8px;',
-                            'background-color: ' + getComputedStyle(document.getElementsByClassName('hljs')[0])['backgroundColor'],
-                        '}',
-                    ];
-                    let istyle = document.createElement('style');
-                    istyle.setAttribute('id', 'hljsStyle');
-                    istyle.type = 'text/css';
-                    istyle.innerHTML = lineNumbersStyle.join('').styleFormat(options);
-                    document.getElementsByTagName('head')[0].appendChild(istyle);
-                }
-            }
-            //初始化代码行号
-            this.init = () => {
-                // this.createLineNumbersStyle();
-                let code = document.querySelectorAll('code');
-                code.forEach(function(item){
-                    // 根据页面布局，code 标签内是缩进了 12 个空格的代码，输出时要去除不必要的空格
-                    let codeStr = item.innerHTML.substring(1,item.innerHTML.length-9); // \n 换行符算两个字符, 删除 code 标签内自动生成的首尾两个换行符，-9 原因是</code>前有8个空格和一个换行符
-                        codeStr = '<ol><li>' + codeStr.replace(/\n/g, '\n</li><li>') + '\n</li></ol>'; // 插入用于显示行号的 ol
-                        codeStr = codeStr.replace(/<li> {12}/g, '<li>'); // 将页面缩进的前 12 个空格去掉
-                    item.innerHTML = codeStr;
-                })
-            }
-        }
-    }
+    import ImitateScrollBar from '@/assets/script/ImitateScrollBar' // 模拟滚动条
+    import HljsSetLineNumber from '@/assets/script/HljsSetLineNumber' // highlight.js 扩展行号
 
     export default {
         name: 'Doc',
@@ -960,6 +910,7 @@
                     float: 'left', // 设置滚动条在左/右
                 })
 
+                // 设置左侧划出菜单斜边样式，这样添加的样式是全局生效的
                 let vh = document.body.offsetHeight
                 const HYPOTENUSE = Math.ceil(Math.sqrt(Math.pow(80, 2) + Math.pow(vh, 2))) //斜边长度
                 const INCLUDED_ANGLE = Number((Math.atan2(80, vh)*180/Math.PI).toFixed(2)) // 夹角角度
@@ -980,18 +931,15 @@
                 }
 
                 // 点击左侧栏内容跳到相应的锚点
-                let anchorPointArray = [];
+                let anchorPointArray = []
                 let anchorList = document.querySelectorAll('.anchor')
                 anchorList.forEach(element => {
                     anchorPointArray.push(element.offsetTop)
-                });
+                })
 
-                // let mainBox = document.getElementById('mainBox')
-                // let sideBox = document.getElementById('sideBox')
                 let sideMenu = document.getElementById('sideMenu')
                 let sideMenuBg = document.getElementById('sideMenuBg')
 
-                // let sideMenuTags = sideMenu.getElementsByTagName('li')
                 // 点击对应菜单滚动到对应位置
                 sideMenu.addEventListener('click', event => {
                     let target = event.target
@@ -1023,6 +971,20 @@
                         menuIcon.classList.remove('active')
                         sideMenu.classList.remove('active')
                         sideMenuBg.classList.remove('active')
+                    }
+                })
+
+                // 加载提示
+                let button = document.getElementById('button')
+                let loadingBox = document.getElementById('loadingBox')
+                button.addEventListener('click', () => {
+                    let value = Number(button.dataset.value)
+                    if(value == 0) {
+                        button.dataset.value = 1
+                        loadingBox.classList.add('active')
+                    } else {
+                        button.dataset.value = 0
+                        loadingBox.classList.remove('active')
                     }
                 })
             }
