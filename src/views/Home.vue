@@ -1,5 +1,5 @@
 <template>
-	<div class="main-box">
+	<div class="home-box">
 		<div :class="['background',  { active: isActive }]">
 			<icon-sprite class="mat" icon-name="logo"/>
 			<icon-sprite class="logo" icon-name="logo"/>
@@ -7,7 +7,7 @@
 			<span class="text">主页 HOMEPAGE <i>ホームページ</i></span>
 		</div>
 		<div class="content">
-			<!-- <router-link to="/">H</router-link> -->
+			<!-- <router-link to="/doc">D</router-link> -->
 			<router-link to="/haro">H</router-link>
 			<router-link to="/">Y</router-link>
 			<router-link class="pro" to="/">项目</router-link>
@@ -57,7 +57,7 @@
 		opacity: 1;
 	}
 }
-.main-box {
+.home-box {
 	width: 100vw;
 	height: 100vh;
 	overflow: hidden;
@@ -78,7 +78,7 @@
 			margin-top: -70vw;
 			margin-left: -60vw;
 			filter: blur(17vw);
-			transition: all .4s ease;
+			// transition: all .4s ease;
 			opacity: .2;
 
 			/deep/svg {
@@ -89,7 +89,9 @@
 
 		&.active {
 			.mat {
-				animation: fadein 5s ease forwards;
+				transition: opacity 5s ease;
+				opacity: 1;
+				// animation: fadein 5s ease forwards;
 			}
 
 			.logo {

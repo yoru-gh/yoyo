@@ -33,5 +33,10 @@ export default new Router({
 			name: 'responsive',
 			component: () => import('./views/Haro/Responsive.vue')
 		},
+		{
+			path: '/doc',
+			name: 'doc',
+			component: () => import('./views/Doc/Doc.vue')
+		},
 	]
 })
