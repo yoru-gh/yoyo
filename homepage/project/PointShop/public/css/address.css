@@ -1,0 +1,240 @@
+/*author: Yoruni*/
+body {
+	padding-top: 38px;
+	padding-bottom: 38px;
+	background-color: #f7f7f7;
+}
+header {
+	height: 37px;
+	line-height: 37px;
+	text-align: center;
+	border-bottom: 1px #ececec solid;
+}
+header span{
+	position: absolute;
+	top: 0;
+	left: 0;
+	height: 37px;
+}
+b{
+	color: #333;
+	font-weight: normal;
+}
+#goback{
+	width: 15%;
+	background: url(../svg/left.svg) no-repeat center;
+	background-size: 34px;
+}
+#arealist{
+	width: 100%;
+}
+#arealist li{
+	padding: 0 12px 3px 12px;
+	margin-bottom: 5px;
+	background-color: #fff;
+}
+#arealist .nap{
+	height: 36px;
+	line-height: 36px;
+}
+.nap .name{
+	float: left;
+}
+.nap .phone{
+	float: right;
+}
+#arealist .area{
+	height: 34px;
+	line-height: 34px;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	overflow: hidden;
+}
+.area span{
+	font-size: 12px;
+	margin-right: 5px;
+}
+#arealist .btn{
+	height: 36px;
+	overflow: hidden;
+}
+.btn span{
+	height: 22px;
+	font-size: 12px;
+	line-height: 23px;
+	text-indent: 22px;
+	margin-top: 5px;
+}
+.btn span:nth-of-type(1){
+	float: left;
+	background: url(../svg/star.svg) no-repeat left center;
+}
+#arealist .stared{
+	color: #f55;
+	background-image: url(../svg/stared.svg);
+}
+.btn span:nth-of-type(2){
+	float: right;
+	background: url(../svg/label.svg) no-repeat left center;
+}
+.btn span:nth-of-type(3){
+	float: right;
+	background: url(../svg/trash.svg) no-repeat left center;
+	margin-right: 7px;
+}
+#address{
+	position: fixed;
+	left: 0;
+	bottom: 0;
+	z-index: 99;
+	width: 100%;
+	height: 38px;
+	color: #fff;
+	line-height: 38px;
+	text-align: center;
+	background-color: #93C922;
+}
+#mark{
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(68,68,68,.5);
+}
+.markhide{
+	-webkit-transition: transform .3s ease, opacity .3s ease, z-index 0s .3s;
+	transition: transform .3s ease, opacity .3s ease, z-index 0s .3s;
+	z-index: -1;
+	-webkit-transform: translate3d(0,0,0) scale(.8);
+	transform: translate3d(0,0,0) scale(.8);
+	opacity: 0;
+}
+.markshow{
+	-webkit-transition: transform .3s ease, opacity .3s ease, z-index 0s;
+	transition: transform .3s ease, opacity .3s ease, z-index 0s;
+	z-index: 100;
+	-webkit-transform: translate3d(0,0,0) scale(1);
+	transform: translate3d(0,0,0) scale(1);
+	opacity: 1;
+}
+#editBox{
+	width: 100%;
+	padding-bottom: 38px;
+	box-shadow: 0 2px 10px #888;
+	background-color: #fff;
+}
+#editBox ul li{
+	padding: 0 12px;
+	height: 38px;
+	border-bottom: 1px #eee solid;
+}
+#editBox ul li span{
+	float: left;
+	width: 20%;
+	height: 38px;
+	font-size: 12px;
+	line-height: 38px;
+}
+#editBox ul li input{
+	float: left;
+	width: 80%;
+	height: 38px;
+	font-size: 12px;
+	line-height: 38px;
+}
+#city input{
+	box-sizing: border-box;
+	padding-right: 20px;
+	text-align: right;
+	background: url(../svg/right.svg) no-repeat right center;
+	background-size: 20px;
+}
+#street input{
+	text-align: right;
+}
+#editBox #addr{
+	height: 80px;
+}
+#addr textarea{
+	width: 100%;
+	height: 60px;
+	padding: 10px 0;
+	font-size: 12px;
+	resize: none;
+}
+#setclose{
+	float: left;
+	width: 50%;
+	height: 38px;
+	color: #fff;
+	line-height: 38px;
+	text-align: center;
+	background-color: #999;
+}
+#setsave{
+	float: left;
+	width: 50%;
+	height: 38px;
+	color: #fff;
+	line-height: 38px;
+	text-align: center;
+	background-color: #93C922;
+}
+#areaBox{
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(68,68,68,.5);
+	display: -webkit-box;
+	-webkit-box-pack: center;
+	-webkit-box-align: center;
+}
+#areaWarper{
+	box-sizing: border-box;
+	width: 250px;
+	height: 400px;
+	background-color: #fff;
+	border-radius: 8px;
+	box-shadow: 0 2px 10px #888;
+	overflow: hidden;
+}
+#areaWarper ul{
+	width: 100%;
+	height: 322px;
+	overflow-x: hidden;
+	overflow-y: auto;
+}
+#areaWarper ul li{
+	height: 40px;
+	line-height: 40px;
+	padding: 0 10px;
+	background-color: #fff;
+}
+#areaWarper p{
+	box-sizing: border-box;
+	height: 40px;
+	padding: 0 30px 0 10px;
+	line-height: 40px;
+	border-bottom: 1px #ddd solid;
+	background: #f7f7f7 url(../svg/close.svg) no-repeat 220px center;
+	background-size: 22px;
+}
+#areaWarper p span{
+	float: left;
+	margin-right: 10px;
+}
+#areaclose,#areasave{
+	float: left;
+	width: 50%;
+	height: 38px;
+	color: #fff;
+	line-height: 38px;
+	text-align: center;
+	background-color: #93C922;
+}
+#areaclose{
+	background-color: #aaa;
+}

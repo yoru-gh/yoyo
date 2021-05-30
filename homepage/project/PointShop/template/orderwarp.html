@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no">
+        <!-- uc强制排版标准模式 -->
+        <meta name="layoutmode" content="standard">
+        <!-- uc浏览器强制竖屏 -->
+        <meta name="screen-orientation" content="portrait">
+        <!-- uc浏览器强制有图 -->
+        <meta name="imagemode" content="force">
+        <!-- QQ浏览器强制竖屏 -->
+        <meta name="x5-orientation" content="portrait">
+        <!--防止IOS设备识别数字为电话号码-->
+        <meta name="format-detection" content="telephone=no">
+		<meta name="author" content="Yoruni">
+		<link rel="stylesheet" type="text/css" href="../public/css/cssreset.css">
+		<link rel="stylesheet" type="text/css" href="../public/css/orderwarp.css">
+        <script type="text/javascript" src="../public/js/jquery.min.js"></script>
+		<script type="text/javascript" src="../public/js/orderwarp.js"></script>
+		<title></title>
+	</head>
+	<body>
+		<header>
+			<span id="goback"><a href="javascript:history.go(-1)"></a></span>
+            订单详细
+            <button id="selectarea">选择收货地</button>
+		</header>
+		<!-- 页面内容content -->
+		<div id="content">
+            <ul id="arealist">
+                <li>
+                    <div class="nap">
+                        <span class="name">小明一号</span>
+                        <span class="phone">13800138000</span>
+                    </div>
+                    <p class="area">
+                        <span>广东省广州市天河区</span><span>新塘街道</span><span>华观路东天虹科技园A栋411室</span>
+                    </p>
+                    <!-- 物流信息在订单信息页面时显示 -->
+                    <p>物流：<b>顺丰速运</b>，<b>DSE164185615165165</b></p>
+                </li>
+            </ul>    
+            <ul id="goodslist">
+                <li class="goods"><a href="#">
+                    <img src="../public/img/phone.jpg">
+                    <p>2016最新款 iPhone pro 双摄像头 A10 处理器 256G 内存</p>
+                    <p>现金：￥<b class="jine">888</b>&nbsp;&nbsp;&nbsp;积分：<b class="jifen">88</b></p>
+                    <p><span>数量：<b>88</b></span></p>  
+                    <p><span>合计：￥<b>8888</b>，积分：<b>888</b></span></p>   
+                </a></li>
+                <li class="goods"><a href="#">
+                    <img src="../public/img/phone.jpg">
+                    <p>2016最新款 iPhone pro 双摄像头 A10 处理器 256G 内存</p>
+                    <p>现金：￥<b class="jine">888</b>&nbsp;&nbsp;&nbsp;积分：<b class="jifen">88</b></p>
+                    <p><span>数量：<b>88</b></span></p>  
+                    <p><span>合计：￥<b>8888</b>，积分：<b>888</b></span></p>   
+                </a></li>
+                <li class="goods"><a href="#">
+                    <img src="../public/img/phone.jpg">
+                    <p>2016最新款 iPhone pro 双摄像头 A10 处理器 256G 内存</p>
+                    <p>现金：￥<b class="jine">888</b>&nbsp;&nbsp;&nbsp;积分：<b class="jifen">88</b></p>
+                    <p><span>数量：<b>88</b></span></p>  
+                    <p><span>合计：￥<b>8888</b>，积分：<b>888</b></span></p>  
+                </a></li>
+            </ul>
+		</div>
+        <div id="btn">
+            <p>总计：￥<b>666</b>，积分<b id="btnJifen">888</b></p>
+            <button id="payPoint">某某某</button>
+        </div>
+        <!-- 更换地址面板 -->
+        <div id="selectBox" class="markhide">
+            <ul id="sellist">
+                <li>
+                    <div class="nap">
+                        <span class="name">小明一号</span>
+                        <span class="phone">13800138000</span>
+                    </div>
+                    <p class="area">
+                        <span>广东省广州市天河区</span><span>新塘街道</span><span>华观路东天虹科技园A栋411室</span>
+                    </p>
+                    <div class="btn">
+                        <span>选择</span>
+                    </div>
+                </li>
+                <li>
+                    <div class="nap">
+                        <span class="name">小明二号</span>
+                        <span class="phone">13800138000</span>
+                    </div>
+                    <p class="area">
+                        <span>广东省广州市天河区</span><span>新塘街道</span><span>华观路东天虹科技园A栋411室</span>
+                    </p>
+                    <div class="btn">
+                        <span>选择</span>
+                    </div>
+                </li>
+                <li>
+                    <div class="nap">
+                        <span class="name">小明三号</span>
+                        <span class="phone">13800138000</span>
+                    </div>
+                    <p class="area">
+                        <span>广东省广州市天河区</span><span>新塘街道</span><span>华观路东天虹科技园A栋411室</span>
+                    </p>
+                    <div class="btn">
+                        <span>选择</span>
+                    </div>
+                </li>
+            </ul>
+            <button id="noadd">取消</button>
+            <button id="address">添加新地址</button>
+        </div>
+        <!-- 编辑地址面板 -->
+        <div id="mark" class="markhide">
+            <div id="editBox">
+                <ul>
+                    <li id="name">
+                        <span>收货人</span>
+                        <input type="text" placeholder="输入收货人姓名...">
+                    </li>
+                    <li id="tel">
+                        <span>联系电话</span>
+                        <input type="text" placeholder="输入收货人电话...">
+                    </li>
+                    <li id="city">
+                        <span>地区</span>
+                        <input type="text" readonly value="选择地区">
+                    </li>
+                    <li id="street">
+                        <span>街道</span>
+                        <input type="text" placeholder="输入所属街道...">
+                    </li>
+                    <li id="addr">
+                        <textarea>输入详细地址...</textarea>
+                    </li>
+                </ul>
+                <button id="setclose">取消</button>
+                <button id="setsave">保存</button>
+            </div>
+        </div>
+        <!-- 地区选择 -->
+        <div id="areaBox" class="markhide">
+            <div id="areaWarper">
+                <p></p>
+                <ul>
+                    <li>城市1</li>
+                    <li>城市2</li>
+                    <li>城市3</li>
+                    <li>城市4</li>
+                    <li>城市5</li>
+                    <li>城市6</li>
+                    <li>城市7</li>
+                    <li>城市8</li>
+                    <li>城市9</li>
+                </ul>
+                <button id="areaclose">取消</button>
+                <button id="areasave">确定</button>
+            </div>
+        </div>
+        <!-- 支付积分 -->
+        <div id="pointMark" class="markhide">
+            <div id="pointPayBox">
+                <p>您当前需要支付：<b></b>个积分</p>
+                <input type="password" placeholder="请输入积分支付密码...">
+                <span id="tess"></span>
+                <button>取消</button>
+                <button>确定</button>
+            </div>
+        </div>
+	</body>
+</html>

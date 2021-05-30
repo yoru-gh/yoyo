@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1, user-scalable=no">
+		<meta name="theme-color" content="#ff3528">
+		<meta name="author" content="Yoruni">
+		<link rel="stylesheet" type="text/css" href="css/list.css">
+		<title>LIST</title>
+		<link rel="shortcut icon" href="img/favicon.ico">
+	</head>
+	<!-- <body></body> -->
+	<body>
+		<header>
+			<div class="top">
+				<div class="wrap">
+					<a href="index.html" class="left">首页</a>
+					<a href="">推荐</a>
+					<a href="">商品页</a>
+					<a href="">新手引导</a>
+					<a href="">代练</a>
+					<a href="">关于我们</a>
+					<a href="">商品页</a>
+					<a href="">注册</a>
+					<a href="">登录</a>
+				</div>
+			</div>
+			<div class="middle">
+				<div class="left">
+					<img src="img/ad.png">
+					<!-- 这里不是放 LOGO 的 -->
+					<!-- <span>AD</span> -->
+				</div>
+				<div class="right">
+					<div class="search-box">
+						<input class="bar" type="text" placeholder="输入要搜索的玩意儿...">
+						<button class="search"></button>
+						<button class="publish">发布账号</button>
+						<div class="hot">
+							<a href="">推荐</a>
+							<a href="">商品页</a>
+							<a href="">新手引导</a>
+							<a href="">代练</a>
+							<a href="">关于我们</a>
+							<a href="">商品页</a>
+							<a href="">新手引导</a>
+							<a href="">代练</a>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="bottom">
+				<div class="wrap">
+					<a href="index.html">商城首页</a>
+					<a href="list.html" class="active">商品列表</a>
+					<a href="">商品页</a>
+					<a href="">新手引导</a>
+					<a href="">代练</a>
+					<a href="">商品页</a>
+					<a href="">新手引导</a>
+					<a href="">代练</a>
+					<a href="">关于我们</a>
+					<a href="">加盟</a>
+					<a href="" class="light" txt="上号器下载">上号器下载</a>
+				</div>
+			</div>
+		</header>
+		<!-- 悬浮菜单 -->
+		<nav id="nav">
+			<div class="wrap">
+				<!-- <a href="index.html"><img src="img/logo.png" class="logo"></a> -->
+				<div class="nav-box">
+					<input class="nav-bar" type="text" placeholder="输入要搜索的玩意儿...">
+					<a href="" class="nav-search"></a>
+					<a href="" class="nav-publish">发布账号</a>
+					<a href="" class="nav-down">上号器下载</a>
+				</div>
+			</div>
+		</nav>
+		<div class="content">
+			<div class="top-games">
+				<span>热门游戏</span>
+				<ul>
+					<li><a href=""></a><img src="img/rentplay.svg"></li>
+					<li><a href=""></a><img src="img/rentplay.svg"></li>
+					<li><a href=""></a><img src="img/rentplay.svg"></li>
+					<li><a href=""></a><img src="img/rentplay.svg"></li>
+					<li><a href=""></a><img src="img/rentplay.svg"></li>
+				</ul>
+			</div>
+			<!-- 字母导航 -->
+			<div class="game-nav">
+				<span>选择游戏</span>
+				<ul class="key-list" id="keyList">
+					<li>A</li>
+					<li>B</li>
+					<li>C</li>
+					<li>D</li>
+					<li>E</li>
+					<li>F</li>
+					<li>G</li>
+					<li>H</li>
+					<li>I</li>
+					<li>J</li>
+					<li>K</li>
+					<li>L</li>
+					<li>M</li>
+					<li>N</li>
+					<li>O</li>
+					<li>P</li>
+					<li>Q</li>
+					<li>R</li>
+					<li>S</li>
+					<li>T</li>
+					<li>U</li>
+					<li>V</li>
+					<li>W</li>
+					<li>X</li>
+					<li>Y</li>
+					<li>Z</li>
+				</ul>
+				<div class="key-box" id="keyBox">
+					<span class="pin"></span>
+					<ul class="list"></ul>
+				</div>
+			</div>
+			<!--  -->
+			<div class="filter-nav">
+				<span>当前游戏</span>
+				<p data="刺激战场" id="selected">刺激战场</p>
+			</div>
+			<div class="filter-nav">
+				<span>游戏大区</span>
+				<ul class="filter-list" id="area">
+					<li class="active">全部</li>
+					<li>二区</li>
+					<li>三区</li>
+					<li>四区</li>
+					<li>五区</li>
+					<li>六区</li>
+					<li>七区</li>
+				</ul>
+			</div>
+			<div class="filter-nav">
+				<span>价格区间</span>
+				<ul class="filter-list" id="price">
+					<li class="active">全部</li>
+					<li>0~50 元</li>
+					<li>51~100 元</li>
+					<li>101~150 元</li>
+					<li>151~200 元</li>
+					<li>201~300 元</li>
+					<li>300 元以上</li>
+				</ul>
+			</div>
+			<div class="catalog">
+				<div class="mode" id="mode">
+					<button  class="active" md="block">方块</button>
+					<button md="list">列表</button>
+				</div>
+				<div class="load-wrap" id="loadWrap">
+					<div class="load-line"><span></span><span></span><span></span><span></span><span></span></div>
+				</div>
+				<ul class="cata-block" id="catalog">
+					<li>
+						<img src="img/pic2.png">
+						<p><span>[穿越火线]</span>9王者不重复刺幻光王者炼狱等刀锋猫43V7烈6盘6炼狱7步2狙7手6刀变色皮肤全有挑战生化爆破全装</p>
+						<div>
+							<span>出租条件：<i>2小时起租</i></span>
+							<span>出租条件：2小时起租</span>
+							<span>出租条件：2小时起租</span>
+							<span>出租条件：2小时起租</span>
+							<span>出租条件：2小时起租</span>
+							<span>出租条件：2小时起租</span>
+						</div>
+						<a href=""></a>
+						<button class="collect"></button>
+						<button class=""></button>
+					</li>
+					<li>
+						<img src="img/pic2.png">
+						<p><span>[穿越火线]</span>9王者不重复刺幻光王者炼狱等刀锋猫43V7烈6盘6炼狱7步2狙7手6刀变色皮肤全有挑战生化爆破全装</p>
+						<div>
+							<span>出租条件：<i>2小时起租</i></span>
+							<span>出租条件：2小时起租</span>
+							<span>出租条件：2小时起租</span>
+							<span>出租条件：2小时起租</span>
+							<span>出租条件：2小时起租</span>
+							<span>出租条件：2小时起租</span>
+						</div>
+						<a href=""></a>
+						<button class="collect"></button>
+						<button class=""></button>
+					</li>
+					<li>
+						<img src="img/pic2.png">
+						<p><span>[穿越火线]</span>9王者不重复刺幻光王者炼狱等刀锋猫43V7烈6盘6炼狱7步2狙7手6刀变色皮肤全有挑战生化爆破全装</p>
+						<div>
+							<span>出租条件：<i>2小时起租</i></span>
+							<span>出租条件：2小时起租</span>
+							<span>出租条件：2小时起租</span>
+							<span>出租条件：2小时起租</span>
+							<span>出租条件：2小时起租</span>
+							<span>出租条件：2小时起租</span>
+						</div>
+						<a href=""></a>
+						<button class="collect"></button>
+						<button class=""></button>
+					</li>
+					<li>
+						<img src="img/pic2.png">
+						<p><span>[穿越火线]</span>9王者不重复刺幻光王者炼狱等刀锋猫43V7烈6盘6炼狱7步2狙7手6刀变色皮肤全有挑战生化爆破全装</p>
+						<div>
+							<span>出租条件：<i>2小时起租</i></span>
+							<span>出租条件：2小时起租</span>
+							<span>出租条件：2小时起租</span>
+							<span>出租条件：2小时起租</span>
+							<span>出租条件：2小时起租</span>
+							<span>出租条件：2小时起租</span>
+						</div>
+						<a href=""></a>
+						<button class="collect"></button>
+						<button class=""></button>
+					</li>
+					<li>
+						<img src="img/pic2.png">
+						<p><span>[穿越火线]</span>9王者不重复刺幻光王者炼狱等刀锋猫43V7烈6盘6炼狱7步2狙7手6刀变色皮肤全有挑战生化爆破全装</p>
+						<div>
+							<span>出租条件：<i>2小时起租</i></span>
+							<span>出租条件：2小时起租</span>
+							<span>出租条件：2小时起租</span>
+							<span>出租条件：2小时起租</span>
+							<span>出租条件：2小时起租</span>
+							<span>出租条件：2小时起租</span>
+						</div>
+						<a href=""></a>
+						<button class="collect"></button>
+						<button class=""></button>
+					</li>
+					<li>
+						<img src="img/pic2.png">
+						<p><span>[穿越火线]</span>9王者不重复刺幻光王者炼狱等刀锋猫43V7烈6盘6炼狱7步2狙7手6刀变色皮肤全有挑战生化爆破全装</p>
+						<div>
+							<span>出租条件：<i>2小时起租</i></span>
+							<span>出租条件：2小时起租</span>
+							<span>出租条件：2小时起租</span>
+							<span>出租条件：2小时起租</span>
+							<span>出租条件：2小时起租</span>
+							<span>出租条件：2小时起租</span>
+						</div>
+						<a href=""></a>
+						<button class="collect"></button>
+						<button class=""></button>
+					</li>
+					<li>
+						<img src="img/pic2.png">
+						<p><span>[穿越火线]</span>9王者不重复刺幻光王者炼狱等刀锋猫43V7烈6盘6炼狱7步2狙7手6刀变色皮肤全有挑战生化爆破全装</p>
+						<div>
+							<span>出租条件：<i>2小时起租</i></span>
+							<span>出租条件：2小时起租</span>
+							<span>出租条件：2小时起租</span>
+							<span>出租条件：2小时起租</span>
+							<span>出租条件：2小时起租</span>
+							<span>出租条件：2小时起租</span>
+						</div>
+						<a href=""></a>
+						<button class="collect"></button>
+						<button class=""></button>
+					</li>
+					<li>
+						<img src="img/pic2.png">
+						<p><span>[穿越火线]</span>9王者不重复刺幻光王者炼狱等刀锋猫43V7烈6盘6炼狱7步2狙7手6刀变色皮肤全有挑战生化爆破全装</p>
+						<div>
+							<span>出租条件：<i>2小时起租</i></span>
+							<span>出租条件：2小时起租</span>
+							<span>出租条件：2小时起租</span>
+							<span>出租条件：2小时起租</span>
+							<span>出租条件：2小时起租</span>
+							<span>出租条件：2小时起租</span>
+						</div>
+						<a href=""></a>
+						<button class="collect"></button>
+						<button class=""></button>
+					</li>
+					<li>
+						<img src="img/pic2.png">
+						<p><span>[穿越火线]</span>9王者不重复刺幻光王者炼狱等刀锋猫43V7烈6盘6炼狱7步2狙7手6刀变色皮肤全有挑战生化爆破全装</p>
+						<div>
+							<span>出租条件：<i>2小时起租</i></span>
+							<span>出租条件：2小时起租</span>
+							<span>出租条件：2小时起租</span>
+							<span>出租条件：2小时起租</span>
+							<span>出租条件：2小时起租</span>
+							<span>出租条件：2小时起租</span>
+						</div>
+						<a href=""></a>
+						<button class="collect"></button>
+						<button class=""></button>
+					</li>
+					<li>
+						<img src="img/pic2.png">
+						<p><span>[穿越火线]</span>9王者不重复刺幻光王者炼狱等刀锋猫43V7烈6盘6炼狱7步2狙7手6刀变色皮肤全有挑战生化爆破全装</p>
+						<div>
+							<span>出租条件：<i>2小时起租</i></span>
+							<span>出租条件：2小时起租</span>
+							<span>出租条件：2小时起租</span>
+							<span>出租条件：2小时起租</span>
+							<span>出租条件：2小时起租</span>
+							<span>出租条件：2小时起租</span>
+						</div>
+						<a href=""></a>
+						<button class="collect"></button>
+						<button class=""></button>
+					</li>
+					<li>
+						<img src="img/pic2.png">
+						<p><span>[穿越火线]</span>9王者不重复刺幻光王者炼狱等刀锋猫43V7烈6盘6炼狱7步2狙7手6刀变色皮肤全有挑战生化爆破全装</p>
+						<div>
+							<span>出租条件：<i>2小时起租</i></span>
+							<span>出租条件：2小时起租</span>
+							<span>出租条件：2小时起租</span>
+							<span>出租条件：2小时起租</span>
+							<span>出租条件：2小时起租</span>
+							<span>出租条件：2小时起租</span>
+						</div>
+						<a href=""></a>
+						<button class="collect"></button>
+						<button class=""></button>
+					</li>
+					<li>
+						<img src="img/pic2.png">
+						<p><span>[穿越火线]</span>9王者不重复刺幻光王者炼狱等刀锋猫43V7烈6盘6炼狱7步2狙7手6刀变色皮肤全有挑战生化爆破全装</p>
+						<div>
+							<span>出租条件：<i>2小时起租</i></span>
+							<span>出租条件：2小时起租</span>
+							<span>出租条件：2小时起租</span>
+							<span>出租条件：2小时起租</span>
+							<span>出租条件：2小时起租</span>
+							<span>出租条件：2小时起租</span>
+						</div>
+						<a href=""></a>
+						<button class="collect"></button>
+						<button class=""></button>
+					</li>
+				</ul>
+			</div>
+		</div>
+		<footer>©copyright</footer>
+		<script type="text/javascript" src="js/list.js"></script>
+	</body>
+</html>

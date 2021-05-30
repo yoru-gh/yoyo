@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1, user-scalable=no" />
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <meta name="author" content="Yoruni">
+        <link rel="stylesheet" type="text/css" href="../public/css/yoruni.css">
+        <link rel="stylesheet" type="text/css" href="../public/css/weight.css">
+        <script type="text/javascript" src="../public/js/zepto.min.js"></script>
+        <script type="text/javascript" src="../public/js/mui.min.js"></script>
+        <script type="text/javascript" src="../public/js/weight.js"></script>
+        <title>计算称重</title>
+    </head>
+    <body>
+        <header><a id="return" class="mui-action-back"></a></header>
+        <div id="content">
+            <ul id="tableMes">
+                <li id="tableNum">
+                    <span class="listName">桌号：</span>
+                    <input type="text" class="tableInput" placeholder="请输入...">
+                </li>
+                <li id="food">
+                    <span class="listName">食材：</span>
+                    <span class="listText"><i>请选择...</i></span>
+                </li>
+                <li>
+                    <span class="listName">单价：</span>
+                    <input type="text" class="tableInput" placeholder="请输入...">&nbsp;元
+                </li>
+                <li id="jili">
+                    <span class="listName">重量：</span>
+                    <input type="text" class="tableInput" placeholder="请输入...">&nbsp;<i>公斤</i>
+                </li>
+                <li id="all">
+                    <span class="listName">合计&nbsp;<i id="pagePrice">0</i>&nbsp;元</span>
+                    <a id="goOpen" href="#">确认</a>
+                </li>
+            </ul>
+        </div>
+        <div id="mask"></div>
+        <div id="sellist">
+            <div id="searchBox">
+                <input type="text" placeholder="输入菜编号...">
+                <span id="searchBtn"></span>
+            </div>
+            <ul>
+                <li value="公斤">某某某1</li>
+                <li value="克">某某某2</li>
+                <li value="斤">某某某3</li>
+                <li value="两">某某某4</li>
+                <li value="条">某某某5</li>
+                <li value="只">某某某6</li>
+            </ul>
+        </div>
+    </body>
+</html>

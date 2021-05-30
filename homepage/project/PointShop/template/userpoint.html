@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no">
+        <!-- uc强制排版标准模式 -->
+        <meta name="layoutmode" content="standard">
+        <!-- uc浏览器强制竖屏 -->
+        <meta name="screen-orientation" content="portrait">
+        <!-- uc浏览器强制有图 -->
+        <meta name="imagemode" content="force">
+        <!-- QQ浏览器强制竖屏 -->
+        <meta name="x5-orientation" content="portrait">
+        <!-- 防止IOS设备识别数字为电话号码 -->
+        <meta name="format-detection" content="telephone=no">
+		<meta name="author" content="Yoruni">
+		<link rel="stylesheet" type="text/css" href="../public/css/cssreset.css">
+		<link rel="stylesheet" type="text/css" href="../public/css/userpoint.css">
+		<script type="text/javascript" src="../public/js/jquery.min.js"></script>
+		<title></title>
+	</head>
+	<body>
+		<header>
+			<span id="goback"><a href="javascript:history.go(-1)"></a></span>
+            积分流水
+		</header>
+		<!-- 页面内容content -->
+		<div id="content">
+            <ul id="pointlist">
+                <li><b>支出积分：888</b><span>2016-07-20 星期三 12:23</span></li>
+                <li><b>支出积分：888</b><span>2016-07-20 星期三 12:23</span></li>
+                <li><b>支出积分：888</b><span>2016-07-20 星期三 12:23</span></li>
+                <li><b>收入积分：888</b><span>2016-07-20 星期三 12:23</span></li>
+                <li><b>收入积分：888</b><span>2016-07-20 星期三 12:23</span></li>
+                <li><b>收入积分：888</b><span>2016-07-20 星期三 12:23</span></li>
+                <li><b>支出积分：888</b><span>2016-07-20 星期三 12:23</span></li>
+                <li><b>支出积分：888</b><span>2016-07-20 星期三 12:23</span></li>
+                <li><b>支出积分：888</b><span>2016-07-20 星期三 12:23</span></li>
+                <li><b>支出积分：888</b><span>2016-07-20 星期三 12:23</span></li>
+                <li><b>支出积分：888</b><span>2016-07-20 星期三 12:23</span></li>
+                <li><b>支出积分：888</b><span>2016-07-20 星期三 12:23</span></li>
+                <li><b>支出积分：888</b><span>2016-07-20 星期三 12:23</span></li>
+                <li><b>支出积分：888</b><span>2016-07-20 星期三 12:23</span></li>
+                <li><b>支出积分：888</b><span>2016-07-20 星期三 12:23</span></li>
+            </ul>
+        </div>
+        <div id="hideBox">
+            <input type="text" placeholder="输入要跳去的页面...">
+        </div>
+        <div id="page">
+            <span id="prevPage"></span>
+            <a>当前第&nbsp;<b>1</b>&nbsp;页，共&nbsp;<b>99</b>&nbsp;页</a>
+            <span id="nextPage"></span>
+            <button id="tobiPage" value="true">跳页</button>
+        </div>
+	</body>
+    <script type="text/javascript">
+        $(function(){
+            $("#tobiPage").click(function(event) {
+                event.preventDefault();
+                if ($(this).val()=="true") {
+                    $(this).attr("value",false);
+                    $(this).text("确定");  
+                    $("#hideBox").fadeIn(200); 
+                }else{
+                    $(this).attr("value",true);
+                    $(this).text("跳页");
+                    $("#hideBox").fadeOut(200);     
+                }
+            });
+            $("#prevPage").click(function(){
+                alert("上一页");
+            });
+            $("#nextPage").click(function(){
+                alert("下一页");
+            });
+        });
+    </script>
+</html>

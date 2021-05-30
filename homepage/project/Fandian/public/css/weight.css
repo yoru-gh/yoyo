@@ -1,0 +1,165 @@
+body{
+	padding-top: 45px;
+	background-color: #fff;
+	overflow-x: hidden;
+}
+header{
+	text-align: center;
+	line-height: 44px;
+}
+i{
+	font-style: normal;
+}
+#return{
+	position: absolute;
+	top: 0;
+	right: 0;
+	width: 45px;
+	height: 45px;
+	background: url(../svg/return.svg) no-repeat center;
+	background-size: 26px;
+}
+#tableMes{
+	box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	padding: 12px;
+}
+#tableMes > li{
+	box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	position: relative;
+	padding: 10px 0 10px 70px;
+	height: 40px;
+	background: url(../svg/radioed.svg) no-repeat left center;
+	background-size: 14px;
+	margin-bottom: 10px;
+}
+#tableMes > li *{
+	font-size: 15px;
+}
+#tableMes > li span i{
+	color: #A35BA6;
+	padding: 0 4px;
+}
+.tableInput{
+	box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	width: 50%;
+	height: 34px;
+	padding: 0 12px;
+	margin-top: -7px;
+	line-height: 34px;
+	border: 1px #e4e4e4 solid;
+	border-radius: 5px;
+}
+#tableNum .tableInput{
+	width: 100%;
+}
+.listName{
+	position: absolute;
+	top: 10px;
+	left: 20px;
+	width: 50px;
+	height: 20px;
+	line-height: 20px;
+}
+.listText{
+	float: right;
+	margin-right: 7px;
+}
+#all .listName{
+	width: 150px;
+}
+#food .listText{
+	padding-right: 22px;
+	background: url(../svg/right.svg) no-repeat right center;
+	background-size: 10px;
+}
+#tableMes #guestMes{
+	margin-bottom: 0;
+	background: none;
+	padding: 10px 0;
+}
+#guestMes textarea{
+	box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	width: 100%;
+	min-height: 80px;
+	padding: 10px;
+	border: 2px #3EB96B dotted;
+	border-radius: 5px;
+}
+#goOpen{
+	position: absolute;
+	top: 3px;
+	right: 0;
+	padding: 10px 20px;
+	line-height: 1em;
+	color: #fff;
+	background-color: #A35BA6;
+	border-radius: 3px;
+}
+#sellist{
+	box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	position: fixed;
+	top: 0;
+	right: -200px;
+	bottom: 0;
+	z-index: 10;
+	width: 200px;
+	padding: 12px;
+	background-color: #fff;
+	transition: all .3s ease;
+	-webkit-transition: all .3s ease;	
+}
+#sellist.active{
+	transform: translateX(-200px);
+	-webkit-transform: translateX(-200px);
+}
+#searchBox{
+	box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	position: absolute;
+	top: 14px;
+	left: 0;
+	right: 0;
+	height: 44px;
+	line-height: 44px;
+	padding: 5px 12px;
+	text-align: center;
+	color: #fff;
+}
+#searchBox input{
+	box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	float: left;
+	width: 80%;
+	height: 34px;
+	padding: 0 8px;
+	line-height: 32px;
+	border: 1px #A35BA6 solid;
+	border-radius: 5px 0 0 5px;
+}
+#searchBox span{
+	box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	float: right;
+	width: 20%;
+	height: 34px;
+	background: #A35BA6 url(../svg/search.svg) no-repeat center;
+	background-size: 16px;
+	border-radius: 0 5px 5px 0;
+}
+#sellist ul{
+	margin-top: 42px;
+}
+#sellist li{
+	height: 39px;
+	line-height: 42px;
+	color: #888;
+	border-bottom: 1px #f4f4f4 solid;
+	overflow: hidden;
+	white-space: normal;
+	text-overflow: hidden;
+}

@@ -1,0 +1,26 @@
+
+
+1.点击桌号，检查是否已经开台，开台就点查询出一点的菜
+
+["10","FS201701171628141424",[{"MealId":"17","Count":"1","MenuId":"0","MenuTasteId":"","MenuTasteName":"","MenuName":"\u751f\u65e5\u5957\u9910"},{"MealId":"0","Count":"1","MenuId":"132","MenuTasteId":"","MenuTasteName":"","MenuName":"\u51b0\u9547\u79cb\u8475"},{"MealId":"0","Count":"1","MenuId":"131","MenuTasteId":"","MenuTasteName":"","MenuName":"\u51c9\u62cc\u8c46\u8150"},{"MealId":"0","Count":"1","MenuId":"128","MenuTasteId":"","MenuTasteName":"","MenuName":"\u51c9\u62cc\u76ae\u86cb"},{"MealId":"0","Count":"1","MenuId":"122","MenuTasteId":"","MenuTasteName":"","MenuName":"\u7ea2\u888d\u9738\u738b\u87f9"},{"MealId":"0","Count":"1","MenuId":"124","MenuTasteId":"53","MenuTasteName":"\u52a0\u70ed","MenuName":"\u7edd\u5473\u62ff\u624b"}]]
+
+
+解释：
+
+[	"10",  ->tableCode 台号
+	"FS201701171628141424",	 ->orderCode  订单号
+	[{"MealId":"17",   ->套餐id，预留，如果为0为普通菜
+	"Count":"1",       ->数量
+	"ItemOrder":"1",   ->跟菜式，一起返回给我
+	"MenuId":"0",      ->菜式id，如果为0为套餐
+	"MenuTasteId":"",  ->口味id
+	"MenuTasteName":"",->口味名称
+	"MenuName":"\u751f\u65e5\u5957\u9910" ->菜式名称
+	},
+
+{"MealId":"0","Count":"1","ItemOrder":"1","MenuId":"132","MenuTasteId":"","MenuTasteName":"","MenuName":"\u51b0\u9547\u79cb\u8475"},{"MealId":"0","Count":"1","ItemOrder":"1","MenuId":"131","MenuTasteId":"","MenuTasteName":"","MenuName":"\u51c9\u62cc\u8c46\u8150"},{"MealId":"0","Count":"1","ItemOrder":"1","MenuId":"128","MenuTasteId":"","MenuTasteName":"","MenuName":"\u51c9\u62cc\u76ae\u86cb"},{"MealId":"0","Count":"1","ItemOrder":"1","MenuId":"122","MenuTasteId":"","MenuTasteName":"","MenuName":"\u7ea2\u888d\u9738\u738b\u87f9"},{"MealId":"0","Count":"1","ItemOrder":"1","MenuId":"124","MenuTasteId":"53","MenuTasteName":"\u52a0\u70ed","MenuName":"\u7edd\u5473\u62ff\u624b"}]    ->已经点的菜
+
+]
+
+
+2.如果没开台，跳到开台页面，修改开台点击是提交订单信息到数据库 返回1后，跳到点餐页面

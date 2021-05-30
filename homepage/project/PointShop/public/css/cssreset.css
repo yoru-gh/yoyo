@@ -1,0 +1,120 @@
+/* author:Yoruni */
+* {
+	padding: 0px;
+	margin: 0px;
+	font-size: 14px;
+	font-family: "微软雅黑";
+	list-style: none;
+	border: none;
+	color: #555;
+}
+html,body{
+	overflow-x: hidden;
+}
+a {
+	text-decoration: none;
+}
+a,button,input,textarea{
+	-webkit-tap-highlight-color: rgba(255,0,0,0);
+	-webkit-appearance: none;
+	outline: none;
+}
+body {
+	background-color: #f7f7f7;
+}
+header {
+	position: fixed;
+	top: 0px;
+	left: 0px;
+	z-index: 99;
+	width: 100%;
+	height: 40px;
+	background-color: #fff;
+	overflow: hidden;
+}
+header span, header div {
+	height: 40px;
+	float: left;
+}
+span a {
+	display: block;
+	width: 100%;
+	height: 100%;
+}
+#searchGo:active{
+	-webkit-transition: all .3s;
+	transition: all .3s;
+	background-color: #eee;
+}
+footer{
+	position: fixed;
+	bottom: 0;
+	left: 0;
+	z-index: 99;
+	width: 100%;
+	height: 44px;
+	background-color: #fff;
+	border-top: 1px #ddd solid;
+	overflow: hidden;
+}
+footer li{
+	position: relative;
+	float: left;
+	height: 46px;
+	width: 25%;
+}
+footer li a {
+	width: 100%;
+	height: 44px;
+	display: block;
+	color: #999;
+	position: relative;
+	/*display: -webkit-box;
+	-webkit-box-pack: center;
+	-webkit-box-align: center;*/
+}
+footer li a span{
+	position: absolute;
+	bottom: -1px;
+	left: 0;
+	height: 20px;
+	width: 100%;
+	font-size: 12px;
+	color: inherit;
+	text-align: center;
+	line-height: 20px;
+	/*-webkit-transform: scale(0.83);*/
+	/*transform: scale(0.83);*/
+}
+#home a{
+	background: url(../svg/home.svg) no-repeat center -4px;
+	background-size: 38px;
+}
+#home .seled{
+	background-image: url(../svg/homed.svg);
+	color: #93C922;
+}
+#gift a{
+	background: url(../svg/gift.svg) no-repeat center -4px;
+	background-size: 38px;
+}
+#gift .seled{
+	background-image: url(../svg/gifted.svg);
+	color: #93C922;
+}
+#cart a{
+	background: url(../svg/cart.svg) no-repeat center -4px;
+	background-size: 38px;
+}
+#cart .seled{
+	background-image: url(../svg/carted.svg);
+	color: #93C922;
+}
+#user a{
+	background: url(../svg/user.svg) no-repeat center -4px;
+	background-size: 38px;
+}
+#user .seled{
+	background-image: url(../svg/usered.svg);
+	color: #93C922;
+}

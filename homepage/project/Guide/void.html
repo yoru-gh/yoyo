@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1, user-scalable=no" />
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<meta name="author" content="Yoruni">
+		<script type="text/javascript" src="../public/js/mui.js"></script>
+		<title>空白页</title>
+		<style type="text/css">
+			*{
+				padding: 0;
+				margin: 0;
+			}
+			html{
+				width: 100%;
+				height: 100%;
+			}
+			body{
+				width: 100%;
+				height: 100%;
+				background: #fff url(../public/img/720.png) no-repeat center;
+				background-size: cover;
+				overflow: hidden;
+			}
+		</style>
+	</head>
+	<body class="mui-action-back">
+		<script type="text/javascript">
+			mui.plusReady(function(){
+				var thisView = plus.webview.currentWebview();
+				// 监听返回键关闭当前 webview
+				mui.back = function() {
+					thisView.close();
+				};
+			})
+		</script>
+	</body>
+</html>

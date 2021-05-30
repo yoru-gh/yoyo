@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<!-- <html><head><title></title></head><body></body></html> -->
+<html lang="zh-cmn-Hans">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="author" content="Yoruni">
+		<link rel="stylesheet" type="text/css" href="css/payPage.css">
+		<title>引导页</title>
+	</head>
+	<body>
+		<p class="someMes">某某某某</p>
+		<div id="priInput" class="inputBox" value="0">￥ 0.00</div>
+		
+		<p class="tii">付款前请先咨询服务员</p>
+		<div id="otherList">
+			<p>使用积分抵扣</p>
+			<span>可用积分 8888</span>
+			<div id="switchBox" class="active"><span></span></div>
+		</div>
+		<a href="#" class="successBtn">确定</a>
+		<!-- 数字键盘 -->
+		<div id="keybox">
+			<span id="tipSpan">你的输入有误</span>
+			<ul id="keyList">
+				<li><span><b>1</b></span></li>
+				<li><span><b>2</b></span></li>
+				<li><span><b>3</b></span></li>
+				<li><span><b>0</b></span></li>
+				<li><span><b>4</b></span></li>
+				<li><span><b>5</b></span></li>
+				<li><span><b>6</b></span></li>
+				<li><span><b>.</b></span></li>
+				<li><span><b>7</b></span></li>
+				<li><span><b>8</b></span></li>
+				<li><span><b>9</b></span></li>
+				<li><span id="willBack"><b>回退</b></span></li>
+				<li id="willOk">确定</li>
+			</ul>
+		</div>
+		<!-- 遮罩层 -->
+		<div id="keyboxMask"></div>
+	</body>
+	<script type="text/javascript" src="js/payPage.js"></script>
+</html>

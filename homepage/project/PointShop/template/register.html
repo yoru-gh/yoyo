@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no">
+        <!-- uc强制排版标准模式 -->
+        <meta name="layoutmode" content="standard">
+        <!-- uc浏览器强制竖屏 -->
+        <meta name="screen-orientation" content="portrait">
+        <!-- uc浏览器强制有图 -->
+        <meta name="imagemode" content="force">
+        <!-- QQ浏览器强制竖屏 -->
+        <meta name="x5-orientation" content="portrait">
+        <!-- 防止IOS设备识别数字为电话号码 -->
+        <meta name="format-detection" content="telephone=no">
+		<meta name="author" content="Yoruni">
+		<link rel="stylesheet" type="text/css" href="../public/css/cssreset.css">
+		<link rel="stylesheet" type="text/css" href="../public/css/laraf.css">
+		<script type="text/javascript" src="../public/js/jquery.min.js"></script>
+		<title></title>
+	</head>
+	<body>
+		<header>
+			<span id="goback"><a href="javascript:history.go(-1)"></a></span>
+		</header>
+		<!-- 页面内容content -->
+		<div id="registerContent">
+            <input id="username" type="text" placeholder="请输入手机号...">
+            <input id="userpass" type="text" placeholder="请输入密码...">
+            <input id="reuserpass" type="text" placeholder="确认密码...">
+            <input id="validatepass" type="text" placeholder="输入验证码...">
+            <span id="validate" value="true">获取验证码</span>
+            <a id="register" href="#">立即注册</a>
+            <p>某某某积分商城</p>
+        </div>
+	</body>
+    <script type="text/javascript"> 
+        var time = 60;
+        function settime(obj) {
+            if (time == 0) {
+                obj.innerHTML = "重新获取验证码";
+                obj.setAttribute("value",true); 
+                time = 60;
+            } else { 
+                obj.innerHTML = "重新发送 " + time; 
+                time--;
+                var timer = setTimeout(function() {
+                    settime(obj);
+                },1000);
+            };       
+        };
+        document.getElementById("validate").onclick = function(){
+            if (this.getAttribute("value") == "true") {
+                this.setAttribute("value",false);
+                settime(this);
+            }   
+        };
+    </script>
+</html>

@@ -1,0 +1,105 @@
+/*author: Yoruni*/
+body {
+	padding-top: 18%;
+	background: #f5f5f5 url(../img/bg.png) no-repeat center top;
+	background-size: 100%;
+}
+header{
+	background-color: transparent;
+}
+header span{
+	height: 50px;
+}
+input{
+	font-size: 12px;
+}
+#goback{
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 40px;
+	height: 40px;
+	background: url(../svg/left.svg) no-repeat center;
+	background-size: 34px;
+}
+#loginContent,#registerContent,#forgetContent{
+	position: relative;
+	width: 260px;
+	margin: 0 auto;
+}
+#loginContent #username,#registerContent #username,#registerContent #userpass,#registerContent #reuserpass{
+	padding: 0;
+	margin: 0 0 5px 0;
+	border-radius: 3px;
+	border: 1px #fff solid;
+	width: 100%;
+	height: 40px;
+	line-height: 40px;
+	text-indent: 40px;
+	background: rgba(255,255,255,.8) url(../svg/userl.svg) no-repeat 5px center;
+	background-size: 28px;
+}
+#loginContent #userpass,#registerContent #validatepass{
+	padding: 0;
+	border-radius: 3px;
+	border: 1px #fff solid;
+	width: 100%;
+	height: 40px;
+	line-height: 40px;
+	border-bottom: 1px #f7f7f7 solid;
+	margin: 0 0 36px 0;
+	text-indent: 40px;
+	background: rgba(255,255,255,.8) url(../svg/ulock.svg) no-repeat 5px center;
+	background-size: 28px;
+}
+#registerContent #userpass,#registerContent #reuserpass{
+	background-image: url(../svg/ulock.svg);
+}
+#registerContent #validatepass{
+	background-image: url(../svg/ulabel.svg);
+}
+#loginContent #forgetpass{
+	position: absolute;
+	top: 46px;
+	right: 5px;
+	height: 38px;
+	padding: 0 4px;
+	color: #999;
+	font-size: 12px;
+	line-height: 38px;
+}
+#registerContent #validate{
+	position: absolute;
+	top: 136px;
+	right: 5px;
+	height: 38px;
+	padding: 0 4px;
+	color: #999;
+	font-size: 12px;
+	line-height: 38px;
+}
+#login,#register,#reset{
+	display: block;
+	height: 36px;
+	width: 100%;
+	/*margin-left: 5%;*/
+	margin-bottom: 10px;
+	color: #fff;
+	text-align: center;
+	line-height: 36px;
+	background-color: #1CB9F7;
+	border-radius: 3px;
+	outline: none;
+}
+#loginContent #register{
+	background-color: #AFAFAF;
+}
+#loginContent p,#registerContent p{
+	width: 70%;
+	font-size: 12px;
+	color: #999;
+	text-align: center;
+	line-height: 30px;
+	margin: 20px 15%;
+	border-top: 1px #eee solid;
+}

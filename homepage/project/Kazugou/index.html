@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1, user-scalable=no">
+		<meta name="theme-color" content="#ff3528">
+		<meta name="author" content="Yoruni">
+		<link rel="stylesheet" type="text/css" href="css/index.css">
+		<title>VUE_INDEX</title>
+		<link rel="icon" type="image/png" href="img/favicon.png">
+		<script type="text/javascript" src="js/vue.js"></script>
+	</head>
+	<!-- <body></body> -->
+	<body>
+		<header>
+			<div class="top">
+				<div class="wrap">
+					<a href="index.html" class="left">首页</a>
+					<a href="">推荐</a>
+					<a href="">商品页</a>
+					<a href="">新手引导</a>
+					<a href="">代练</a>
+					<a href="">关于我们</a>
+					<a href="">商品页</a>
+					<a href="">注册</a>
+					<a href="">登录</a>
+				</div>
+			</div>
+			<div class="middle">
+				<div class="left">
+					<img src="img/ad.png">
+					<!-- 这里不是放 LOGO 的 -->
+					<!-- <span>AD</span> -->
+				</div>
+				<div class="right">
+					<div class="search-box">
+						<input class="bar" type="text" placeholder="输入要搜索的玩意儿...">
+						<button class="search"></button>
+						<button class="publish">发布账号</button>
+						<div class="hot">
+							<a href="">推荐</a>
+							<a href="">商品页</a>
+							<a href="">新手引导</a>
+							<a href="">代练</a>
+							<a href="">关于我们</a>
+							<a href="">商品页</a>
+							<a href="">新手引导</a>
+							<a href="">代练</a>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="bottom">
+				<div class="wrap">
+					<a href="index.html" class="active">商城首页</a>
+					<a href="list.html">商品列表</a>
+					<a href="">商品页</a>
+					<a href="">新手引导</a>
+					<a href="">代练</a>
+					<a href="">商品页</a>
+					<a href="">新手引导</a>
+					<a href="">代练</a>
+					<a href="">关于我们</a>
+					<a href="">加盟</a>
+					<a href="" class="light" txt="上号器下载">上号器下载</a>
+				</div>
+			</div>
+		</header>
+		<!-- 悬浮菜单 -->
+		<nav id="nav">
+			<div class="wrap">
+				<!-- <a href="index.html" class="logo"><img src="img/logo.png"></a> -->
+				<a href="index.html" class="logo">LOGO</a>
+				<div class="nav-box">
+					<input class="nav-bar" type="text" placeholder="输入要搜索的玩意儿...">
+					<a href="" class="nav-search"></a>
+					<a href="" class="nav-publish">发布账号</a>
+					<a href="" class="nav-down">上号器下载</a>
+					<!-- <a href="" class="nav-call"></a> -->
+				</div>
+			</div>
+		</nav>
+		<div class="content">
+			<div class="game">
+				<p class="title">热门游戏</p>
+				<div class="block">
+					<a href=""></a>
+					<img src="img/rentplay.svg">
+					<p>某标题标题标题</p>
+					<span>某文字文字文字文字</span>
+				</div>
+				<div class="block">
+					<a href=""></a>
+					<img src="img/rentplay.svg">
+					<p>某标题标题标题</p>
+					<span>某文字文字文字文字</span>
+				</div>
+				<div class="block">
+					<a href=""></a>
+					<img src="img/rentplay.svg">
+					<p>某标题标题标题</p>
+					<span>某文字文字文字文字</span>
+				</div>
+				<div class="block">
+					<a href=""></a>
+					<img src="img/rentplay.svg">
+					<p>某标题标题标题</p>
+					<span>某文字文字文字文字</span>
+				</div>
+				<div class="block">
+					<a href=""></a>
+					<img src="img/rentplay.svg">
+					<p>某标题标题标题</p>
+					<span>某文字文字文字文字字文字字文字</span>
+				</div>
+			</div>
+			<div class="banner" id="banner">
+				<ul class="banner-list">
+					<li class="active">1</li>
+					<li>2</li>
+					<li>3</li>
+					<li>4</li>
+					<li>5</li>
+				</ul>
+				<div class="pagination"></div>
+				<button class="switch-button btn-left"></button>
+				<button class="switch-button btn-right"></button>
+			</div>
+			<div class="user" id="user">
+				<div class="log" style="display:none;">
+					<img src="img/user.png">
+					<span>欢迎来到 Mario 的世界</span>
+					<a href="">登录</a>
+					<a href="">注册</a>
+				</div>
+				<div class="reg" id="regBox">
+					<img src="img/user.png">
+					<span v-bind:title="username">{{ welcometxt }}</span>
+					<a v-for="key in button" v-bind:href="key.href">{{ key.text }}</a>
+				</div>
+				<Msgbox :datalist="listData" :tap="tapSwitch" :isactive="isActive"></Msgbox>
+				<!-- <div class="msg" id="msg">
+					<button @click="tapSwitch" v-bind:class="{ active: isActive }">公告</button>
+					<button @click="tapSwitch" v-bind:class="{ active: !isActive }">常见问题</button>
+					<div class="msg-box" id="msgBox" :class="{ active: !isActive }">
+						<ul>
+							<li v-for="key in listLeft" v-bind:class="key.classname"><a v-bind:href="key.href">{{ key.text }}</a></li>
+							<msg-list v-for="key in listLeft" :key='listLeft[key]' :f-key="key" :class="key.classname"></msg-list>
+						</ul>
+						<ul>
+							<li v-for="key in listRight" v-bind:class="key.classname"><a v-bind:href="key.href">{{ key.text }}</a></li>
+							<msg-list v-for="key in listRight" :key='listLeft[key]' :f-key="key" :class="key.classname"></msg-list>
+							
+						</ul>
+						<Msglist :datalist="listLeft"></Msglist>
+						<Msglist :datalist="listRight"></Msglist>
+					</div>
+				</div> -->
+			</div>
+			<ul class="banner-after">
+				<li>
+					<p>购物平台</p>
+					<img src="img/rentplay.svg">
+					<span>某某某说明文字开心购物安全交易</span>
+				</li>
+				<li>
+					<p>购物平台</p>
+					<img src="img/rentplay.svg">
+					<span>某某某说明文字开心购物安全交易</span>
+				</li>
+				<li>
+					<p>购物平台</p>
+					<img src="img/rentplay.svg">
+					<span>某某某说明文字开心购物安全交易</span>
+				</li>
+				<li>
+					<p>购物平台</p>
+					<img src="img/rentplay.svg">
+					<span>某某某说明文字开心购物安全交易</span>
+				</li>
+			</ul>
+			<div class="activity"></div>
+			<div class="sale">
+				<div class="title"></div>
+				<!-- a 标签内不包裹任何东西 -->
+				<ul class="list">
+					<li><a href="">
+						<img src="img/pic1.jpg">
+						<p>某某某说明文字</p>
+					</a></li>
+					<li><a href="">
+						<img src="img/pic3.png">
+						<p>无说明</p>
+					</a></li>
+					<li><a href="">
+						<img src="img/pic2.png">
+						<p>某某某说明文字某某某某某某某某某某某某某某某某说明文字</p>
+					</a></li>
+					<li><a href="">
+						<img src="img/pic3.png">
+						<p>某某某说明文字</p>
+					</a></li>
+					<li><a href="">
+						<img src="img/pic4.png">
+						<p>某某某说明文字某某某某某某某某某某某某某某某某说明文字</p>
+					</a></li>
+					<li><a href="">
+						<img src="img/pic2.png">
+						<p>某某某说明文字</p>
+					</a></li>
+					<li><a href="">
+						<img src="img/pic2.png">
+						<p>某某某说明文字某某某某某某某某某某某某某某某某说明文字</p>
+					</a></li>
+					<li><a href="">
+						<img src="img/pic1.jpg">
+						<p>某某某说明文字某某某某某某某某某某某某某某某某说明文字</p>
+					</a></li>
+					<li><a href="">
+						<img src="img/pic3.png">
+						<p>某某某说明文字某某某某某某某某某某某某某某某某说明文字</p>
+					</a></li>
+					<li><a href="">
+						<img src="img/pic1.jpg">
+						<p>某某某说明文字某某某某某某某某某某某某某某某某说明文字</p>
+					</a></li>
+				</ul>
+				<ul class="list">
+					<li><a href="">
+						<img src="img/pic4.png">
+					</a></li>
+					<li><a href="">
+						<img src="img/pic1.jpg">
+						<p>某某某说明文字某某某某某某某某某某某某某某某某说明文字</p>
+					</a></li>
+					<li><a href="">
+						<img src="img/pic3.png">
+						<p>某某某说明文字</p>
+					</a></li>
+					<li><a href="">
+						<img src="img/pic3.png">
+						<p>某某某说明文字</p>
+					</a></li>
+					<li><a href="">
+						<img src="img/pic3.png">
+						<p>某某某说明文字某某某某某某某某某某某某某某某某说明文字</p>
+					</a></li>
+					<li><a href="">
+						<img src="img/pic2.png">
+						<p>某某某说明文字</p>
+					</a></li>
+					<li><a href="">
+						<img src="img/pic3.png">
+						<p>某某某说明文字某某某某某某某某某某某某某某某某说明文字</p>
+					</a></li>
+					<li><a href="">
+						<img src="img/pic2.png">
+						<p>某某某说明文字开</p>
+					</a></li>
+					<li><a href="">
+						<img src="img/pic3.png">
+						<p>某某某说明文字某某某某某某某某某某某某某某某某说明文字</p>
+					</a></li>
+					<li><a href="">
+						<img src="img/pic2.png">
+						<p>某某某说明文字某某某某某某某某某某某某某某某某说明文字</p>
+					</a></li>
+				</ul>
+				<ul class="list">
+					<li><a href="">
+						<img src="img/pic3.png">
+						<p>某某某说明文字某某某某某某某某某某某某某某某某说明文字</p>
+					</a></li>
+					<li><a href="">
+						<img src="img/pic4.png">
+						<p>某某某说明文字心购物安全交易开心购物安全交易开心购物安全交易</p>
+					</a></li>
+					<li><a href="">
+						<img src="img/pic1.jpg">
+						<p>某某某说明文字某某某某某某某某某某某某某某某某说明文字</p>
+					</a></li>
+					<li><a href="">
+						<img src="img/pic3.png">
+						<p>某某某说明文字</p>
+					</a></li>
+					<li><a href="">
+						<img src="img/pic2.png">
+						<p>某某某说明文字开</p>
+					</a></li>
+					<li><a href="">
+						<img src="img/pic2.png">
+						<p>某某某说明文字</p>
+					</a></li>
+					<li><a href="">
+						<img src="img/pic4.png">
+						<p>某某某说明文字</p>
+					</a></li>
+					<li><a href="">
+						<img src="img/pic3.png">
+						<p>某某某说明文字某某某某某某某某某某某某某某某某说明文字</p>
+					</a></li>
+					<li><a href="">
+						<img src="img/pic3.png">
+						<p>某某某说明文字某某某某某某某某某某某某某某某某说明文字</p>
+					</a></li>
+					<li><a href="">
+						<img src="img/pic2.png">
+						<p>某某某说明文字某某某某某某某某某某某某某某某某说明文字</p>
+					</a></li>
+				</ul>
+				<ul class="list">
+					<li><a href="">
+						<img src="img/pic3.png">
+						<p>某某某说明文字</p>
+					</a></li>
+					<li><a href="">
+						<img src="img/pic2.png">
+						<p>某某某说明文字</p>
+					</a></li>
+					<li><a href="">
+						<img src="img/pic2.png">
+						<p>某某某说明文字某某某某某某某某某某某某某某某某说明文字</p>
+					</a></li>
+					<li><a href="">
+						<img src="img/pic2.png">
+						<p>某某某说明文字</p>
+					</a></li>
+					<li><a href="">
+						<img src="img/pic4.png">
+						<p>某某某说明文字某某某某某某某某某某某某某某某某说明文字</p>
+					</a></li>
+					<li><a href="">
+						<img src="img/pic3.png">
+						<p>某某某说明文字</p>
+					</a></li>
+					<li><a href="">
+						<img src="img/pic1.jpg">
+						<p>某某某说明文字某某某某某某某某某某某某某某某某说明文字</p>
+					</a></li>
+					<li><a href="">
+						<img src="img/pic3.png">
+						<p>某某某说明文字某某某某某某某某某某某某某某某某说明文字</p>
+					</a></li>
+					<li><a href="">
+						<img src="img/pic2.png">
+						<p>某某某说明文字某某某某某某某某某某某某某某某某说明文字</p>
+					</a></li>
+					<li><a href="">
+						<img src="img/pic3.png">
+						<p>某某某说明文字某某某某某某某某某某某某某某某某说明文字</p>
+					</a></li>
+				</ul>
+			</div>
+			<div class="activity tow"></div>
+		</div>
+		<footer>©copyright</footer>
+		<script type="text/javascript" src="js/index.js"></script>
+	</body>
+</html>
